@@ -1,1733 +1,187 @@
-<!DOCTYPE html>
-
-<html lang="pt-BR">
-<head>
-<meta charset="utf-8"/>
-<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Reino Animalia Health Pet - Farmácia Veterinária Premium</title>
-<script src="https://cdn.tailwindcss.com"></script>
-<script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        'tiffany': '#40E0D0',
-                        'tiffany-dark': '#20B2AA',
-                        'tiffany-light': '#AFEEEE',
-                        'navy': '#1e3a8a',
-                        'cream': '#fefce8'
-                    }
-                }
-            }
-        }
-
-        // Função para mostrar páginas
+</div><!-- Footer Premium -->
+  <footer class="bg-navy text-white py-16">
+   <div class="container mx-auto px-6">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12 mb-12"><!-- Logo e Descrição -->
+     <div class="lg:col-span-2">
+      <div class="flex items-center space-x-4 mb-6">
+       <div class="bg-gradient-to-br from-tiffany to-tiffany-dark rounded-2xl p-4">
+        <svg class="w-8 h-8 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 47.48 47.48 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.092 1.209-.138 2.43-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7c2.447.204 4.877.204 7.324 0a4.006 4.006 0 0 0 3.7-3.7c.092-1.209.138-2.43.138-3.662ZM15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
+        </svg>
+       </div>
+       <div>
+        <h4 class="text-2xl font-black">Reino Animalia</h4>
+        <p class="text-tiffany font-bold">Health Pet Premium</p>
+       </div>
+      </div>
+      <p class="text-gray-300 leading-relaxed mb-6 max-w-lg">Há mais de 15 anos cuidando da saúde e bem-estar dos seus pets com produtos premium e atendimento especializado. Sua farmácia veterinária de confiança.</p>
+      <div class="flex space-x-4">
+       <div class="bg-tiffany rounded-full w-12 h-12 flex items-center justify-center hover:bg-tiffany-dark transition-colors cursor-pointer"><span class="text-xl">📘</span>
+       </div>
+       <div class="bg-tiffany rounded-full w-12 h-12 flex items-center justify-center hover:bg-tiffany-dark transition-colors cursor-pointer"><span class="text-xl">📷</span>
+       </div>
+       <div class="bg-tiffany rounded-full w-12 h-12 flex items-center justify-center hover:bg-tiffany-dark transition-colors cursor-pointer"><span class="text-xl">💬</span>
+       </div>
+      </div>
+     </div><!-- Links Rápidos -->
+     <div>
+      <h5 class="text-xl font-bold mb-6 text-tiffany">Links Rápidos</h5>
+      <ul class="space-y-3">
+       <li><a href="#" class="text-gray-300 hover:text-tiffany transition-colors" onclick="showPage('home')">Início</a></li>
+       <li><a href="#" class="text-gray-300 hover:text-tiffany transition-colors" onclick="showPage('vitaminas-minerais')">Vitaminas &amp; Minerais</a></li>
+       <li><a href="#" class="text-gray-300 hover:text-tiffany transition-colors" onclick="showPage('alimentacao-natural')">Alimentação Natural</a></li>
+       <li><a href="#" class="text-gray-300 hover:text-tiffany transition-colors" onclick="showPage('petiscos-funcionais')">Petiscos Funcionais</a></li>
+       <li><a href="#" class="text-gray-300 hover:text-tiffany transition-colors" onclick="showPage('biscoitos-artesanais')">Biscoitos Artesanais</a></li>
+      </ul>
+     </div><!-- Atendimento -->
+     <div>
+      <h5 class="text-xl font-bold mb-6 text-tiffany">Atendimento</h5>
+      <ul class="space-y-3">
+       <li class="text-gray-300">📞 (11) 9999-9999</li>
+       <li class="text-gray-300">💬 (11) 99999-9999</li>
+       <li class="text-gray-300">📧 animaliahealthpetcontato@gmail.com</li>
+       <li class="text-gray-300">🕒 Seg-Sex: 8h às 18h</li>
+       <li class="text-gray-300">🌐 Loja 100% Online</li>
+      </ul>
+     </div>
+    </div>
+    <div class="border-t border-gray-700 pt-8 text-center">
+     <p class="text-gray-400 mb-4">© 2024 Reino Animalia Health Pet Premium. Todos os direitos reservados.</p>
+     <p class="text-sm text-gray-500">CNPJ: 00.000.000/0001-00 | Responsável Técnico: Farmacêutico CRF-SP 12345</p>
+    </div>
+   </div>
+  </footer>
+  <script>
         function showPage(pageId) {
-            // Esconder todas as páginas
+            // Hide all pages
             const pages = document.querySelectorAll('.page');
             pages.forEach(page => {
                 page.classList.remove('active');
             });
             
-            // Mostrar a página selecionada
+            // Show selected page
             const targetPage = document.getElementById(pageId);
             if (targetPage) {
                 targetPage.classList.add('active');
                 targetPage.classList.add('fade-in');
                 
-                // Rolar para o topo
+                // Scroll to top
                 window.scrollTo({ top: 0, behavior: 'smooth' });
+                
+                // Remove fade-in class after animation
+                setTimeout(() => {
+                    targetPage.classList.remove('fade-in');
+                }, 500);
             }
         }
 
-        // Função para toggle do menu mobile
         function toggleMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
             
-            if (mobileMenu.classList.contains('-translate-y-full')) {
-                // Abrir menu
-                mobileMenu.classList.remove('-translate-y-full', 'opacity-0', 'invisible');
-                mobileMenu.classList.add('translate-y-0', 'opacity-100', 'visible');
+            if (mobileMenu.classList.contains('invisible')) {
+                // Show menu with smooth animation
+                mobileMenu.classList.remove('invisible', 'opacity-0', '-translate-y-full');
+                mobileMenu.classList.add('opacity-100', 'translate-y-0');
                 menuIcon.classList.add('hidden');
                 closeIcon.classList.remove('hidden');
+                
+                // Prevent body scroll
+                document.body.style.overflow = 'hidden';
             } else {
-                // Fechar menu
-                mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-                mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+                // Hide menu with smooth animation
+                mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+                mobileMenu.classList.add('opacity-0', '-translate-y-full');
+                
+                setTimeout(() => {
+                    mobileMenu.classList.add('invisible');
+                }, 300);
+                
                 menuIcon.classList.remove('hidden');
                 closeIcon.classList.add('hidden');
+                
+                // Restore body scroll
+                document.body.style.overflow = '';
             }
         }
-
-        // Função para fechar menu mobile
+        
         function closeMobileMenu() {
             const mobileMenu = document.getElementById('mobile-menu');
             const menuIcon = document.getElementById('menu-icon');
             const closeIcon = document.getElementById('close-icon');
             
-            mobileMenu.classList.add('-translate-y-full', 'opacity-0', 'invisible');
-            mobileMenu.classList.remove('translate-y-0', 'opacity-100', 'visible');
+            // Hide menu with smooth animation
+            mobileMenu.classList.remove('opacity-100', 'translate-y-0');
+            mobileMenu.classList.add('opacity-0', '-translate-y-full');
+            
+            setTimeout(() => {
+                mobileMenu.classList.add('invisible');
+            }, 300);
+            
             menuIcon.classList.remove('hidden');
             closeIcon.classList.add('hidden');
+            
+            // Restore body scroll
+            document.body.style.overflow = '';
         }
-
-        // Função para toggle de submenus mobile
+        
         function toggleMobileSubmenu(submenuId) {
             const submenu = document.getElementById(submenuId + '-submenu');
             const arrow = document.getElementById(submenuId + '-arrow');
             
             if (submenu.classList.contains('hidden')) {
                 submenu.classList.remove('hidden');
-                arrow.style.transform = 'rotate(180deg)';
+                arrow.classList.add('rotate-180');
             } else {
                 submenu.classList.add('hidden');
-                arrow.style.transform = 'rotate(0deg)';
+                arrow.classList.remove('rotate-180');
             }
         }
-
-        // Função para processar pedido
-        function processarPedido(event) {
-            event.preventDefault();
-            
-            // Simular processamento
-            const submitButton = event.target.querySelector('button[type="submit"]');
-            const originalText = submitButton.innerHTML;
-            
-            // Mostrar loading
-            submitButton.innerHTML = '<span class="text-2xl">⏳</span><span>Processando...</span>';
-            submitButton.disabled = true;
-            
-            setTimeout(() => {
-                // Mostrar sucesso
-                submitButton.innerHTML = '<span class="text-2xl">✅</span><span>Pedido Confirmado!</span>';
-                submitButton.className = 'w-full bg-gradient-to-r from-green-500 to-green-600 text-white px-8 py-4 rounded-2xl font-black text-lg shadow-xl';
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                if (this.getAttribute('onclick')) return; // Skip if has onclick handler
                 
-                setTimeout(() => {
-                    // Mostrar mensagem de sucesso
-                    const successMessage = document.createElement('div');
-                    successMessage.className = 'fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50';
-                    successMessage.innerHTML = `
-                        <div class="bg-white rounded-3xl p-8 max-w-md mx-4 text-center shadow-2xl">
-                            <div class="text-6xl mb-4">🎉</div>
-                            <h3 class="text-2xl font-black text-navy mb-4">Pedido Confirmado!</h3>
-                            <p class="text-gray-600 mb-6">Seu pedido foi processado com sucesso. Você receberá um email de confirmação em breve.</p>
-                            <button onclick="this.parentElement.parentElement.remove(); showPage('home')" class="bg-gradient-to-r from-tiffany to-cyan-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300">
-                                Continuar Comprando
-                            </button>
-                        </div>
-                    `;
-                    document.body.appendChild(successMessage);
-                }, 1500);
-            }, 2000);
-        }
-
-        // Inicializar quando a página carregar
-        document.addEventListener('DOMContentLoaded', function() {
-            // Mostrar página inicial
-            showPage('home');
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-2xl');
+            } else {
+                header.classList.remove('shadow-2xl');
+            }
+        });
+        
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('slide-in');
+                }
+            });
+        }, observerOptions);
+        
+        // Observe elements for animation
+        document.querySelectorAll('.card-hover').forEach(el => {
+            observer.observe(el);
         });
     </script>
-<style>
-        body {
-            box-sizing: border-box;
-        }
-        
-        .hero-pattern {
-            background-image: 
-                radial-gradient(circle at 25% 25%, #40E0D0 0%, transparent 50%),
-                radial-gradient(circle at 75% 75%, #20B2AA 0%, transparent 50%);
-        }
-        
-        .card-hover {
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        }
-        
-        .card-hover:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 20px 40px rgba(64, 224, 208, 0.3);
-        }
-        
-        .floating {
-            animation: floating 3s ease-in-out infinite;
-        }
-        
-        @keyframes floating {
-            0%, 100% { transform: translateY(0px); }
-            50% { transform: translateY(-10px); }
-        }
-        
-        .slide-in {
-            animation: slideIn 0.8s ease-out;
-        }
-        
-        @keyframes slideIn {
-            from { opacity: 0; transform: translateX(-50px); }
-            to { opacity: 1; transform: translateX(0); }
-        }
-        
-        .menu-item {
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .menu-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.5s;
-        }
-        
-        .menu-item:hover::before {
-            left: 100%;
-        }
-        
-        .glass-effect {
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.1);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: block;
-        }
-
-        .fade-in {
-            animation: fadeIn 0.5s ease-in;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-    </style>
-<style>@view-transition { navigation: auto; }</style>
-<script src="/_sdk/data_sdk.js" type="text/javascript"></script>
-<script src="/_sdk/element_sdk.js" type="text/javascript"></script>
-</head>
-<body class="bg-cream"><!-- Header -->
-<header class="bg-white shadow-2xl sticky top-0 z-50 border-b-4 border-tiffany">
-<div class="container mx-auto px-6">
-<div class="flex items-center justify-between py-6"><!-- Logo Premium -->
-<div class="flex items-center space-x-4">
-<div class="relative">
-<div class="bg-gradient-to-br from-tiffany to-tiffany-dark rounded-2xl p-4 shadow-lg">
-<svg class="w-10 h-10 text-white" fill="currentColor" viewbox="0 0 24 24"><path d="M19.5 12c0-1.232-.046-2.453-.138-3.662a4.006 4.006 0 0 0-3.7-3.7 47.48 47.48 0 0 0-7.324 0 4.006 4.006 0 0 0-3.7 3.7c-.092 1.209-.138 2.43-.138 3.662s.046 2.453.138 3.662a4.006 4.006 0 0 0 3.7 3.7c2.447.204 4.877.204 7.324 0a4.006 4.006 0 0 0 3.7-3.7c.092-1.209.138-2.43.138-3.662ZM15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z"></path>
-</svg>
-</div>
-<div class="absolute -top-1 -right-1 bg-yellow-400 rounded-full w-6 h-6 flex items-center justify-center"><span class="text-xs">🏆</span>
-</div>
-</div>
-<div>
-<h1 class="text-3xl font-black text-navy tracking-tight cursor-pointer" onclick="showPage('home')">Reino Animalia</h1>
-<p class="text-tiffany-dark font-bold text-sm tracking-wider">HEALTH PET PREMIUM</p>
-</div>
-</div><!-- Navigation Premium -->
-<nav class="hidden xl:flex items-center space-x-1"><a class="menu-item px-6 py-3 text-navy font-bold hover:text-tiffany transition-all duration-300 rounded-lg hover:bg-tiffany-light hover:bg-opacity-20" href="#home" onclick="showPage('home')"> Início </a> <!-- Suplementos Premium -->
-<div class="relative group"><button class="menu-item px-6 py-3 text-navy font-bold hover:text-tiffany transition-all duration-300 rounded-lg hover:bg-tiffany-light hover:bg-opacity-20 flex items-center"> Suplementos Premium 
-        <svg class="w-4 h-4 ml-2 transform group-hover:rotate-180 transition-transform duration-300" fill="currentColor" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg></button>
-<div class="absolute top-full left-0 mt-2 w-80 glass-effect rounded-2xl shadow-2xl py-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300 transform group-hover:translate-y-0 translate-y-2">
-<div class="px-6 py-2 border-b border-white border-opacity-20">
-<h3 class="text-tiffany-dark font-bold text-sm uppercase tracking-wider">Nutrição Avançada</h3>
-</div><a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#vitaminas-minerais" onclick="showPage('vitaminas-minerais')"> <span class="font-medium">Vitaminas &amp; Minerais</span> <p class="text-xs text-gray-200 mt-1">Complexos vitamínicos premium</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#probioticos" onclick="showPage('probioticos')"> <span class="font-medium">Probióticos Avançados</span> <p class="text-xs text-gray-200 mt-1">Saúde intestinal completa</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#omega" onclick="showPage('omega')"> <span class="font-medium">Ômega 3 &amp; 6 Premium</span> <p class="text-xs text-gray-200 mt-1">Ácidos graxos essenciais</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#articulacoes" onclick="showPage('articulacoes')"> <span class="font-medium">Articulações &amp; Mobilidade</span> <p class="text-xs text-gray-200 mt-1">Condroitina e glucosamina</p></a>
-</div>
-</div><!-- Medicamentos -->
-<div class="relative group"><button class="menu-item px-6 py-3 text-navy font-bold hover:text-tiffany transition-all duration-300 rounded-lg hover:bg-tiffany-light hover:bg-opacity-20 flex items-center"> Medicamentos 
-        <svg class="w-4 h-4 ml-2 transform group-hover:rotate-180 transition-transform duration-300" fill="currentColor" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg></button>
-<div class="absolute top-full left-0 mt-2 w-80 glass-effect rounded-2xl shadow-2xl py-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-<div class="px-6 py-2 border-b border-white border-opacity-20">
-<h3 class="text-tiffany-dark font-bold text-sm uppercase tracking-wider">Farmácia Veterinária</h3>
-</div><a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#vermifugos" onclick="showPage('vermifugos')"> <span class="font-medium">Vermífugos Eficazes</span> <p class="text-xs text-gray-200 mt-1">Proteção antiparasitária</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#antibioticos" onclick="showPage('antibioticos')"> <span class="font-medium">Antibióticos Veterinários</span> <p class="text-xs text-gray-200 mt-1">Tratamento de infecções</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#anti-inflamatorios" onclick="showPage('anti-inflamatorios')"> <span class="font-medium">Anti-inflamatórios</span> <p class="text-xs text-gray-200 mt-1">Alívio da dor e inflamação</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#homeopatia" onclick="showPage('homeopatia')"> <span class="font-medium">Homeopatia Pet</span> <p class="text-xs text-gray-200 mt-1">Tratamento natural</p></a>
-</div>
-</div><!-- Alimentação -->
-<div class="relative group"><button class="menu-item px-6 py-3 text-navy font-bold hover:text-tiffany transition-all duration-300 rounded-lg hover:bg-tiffany-light hover:bg-opacity-20 flex items-center"> Nutrição Natural 
-        <svg class="w-4 h-4 ml-2 transform group-hover:rotate-180 transition-transform duration-300" fill="currentColor" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg></button>
-<div class="absolute top-full left-0 mt-2 w-80 glass-effect rounded-2xl shadow-2xl py-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-<div class="px-6 py-2 border-b border-white border-opacity-20">
-<h3 class="text-tiffany-dark font-bold text-sm uppercase tracking-wider">Alimentação Premium</h3>
-</div><a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#alimentacao-natural" onclick="showPage('alimentacao-natural')"> <span class="font-medium">Alimentação Natural</span> <p class="text-xs text-gray-200 mt-1">Ingredientes orgânicos</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#petiscos-funcionais" onclick="showPage('petiscos-funcionais')"> <span class="font-medium">Petiscos Funcionais</span> <p class="text-xs text-gray-200 mt-1">Sabor e benefícios</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#biscoitos-artesanais" onclick="showPage('biscoitos-artesanais')"> <span class="font-medium">Biscoitos Artesanais</span> <p class="text-xs text-gray-200 mt-1">100% naturais</p></a>
-</div>
-</div><!-- Spa Pet -->
-<div class="relative group"><button class="menu-item px-6 py-3 text-navy font-bold hover:text-tiffany transition-all duration-300 rounded-lg hover:bg-tiffany-light hover:bg-opacity-20 flex items-center"> Spa Pet 
-        <svg class="w-4 h-4 ml-2 transform group-hover:rotate-180 transition-transform duration-300" fill="currentColor" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg></button>
-<div class="absolute top-full left-0 mt-2 w-80 glass-effect rounded-2xl shadow-2xl py-4 opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-300">
-<div class="px-6 py-2 border-b border-white border-opacity-20">
-<h3 class="text-tiffany-dark font-bold text-sm uppercase tracking-wider">Beleza &amp; Higiene</h3>
-</div><a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#shampoos-premium" onclick="showPage('shampoos-premium')"> <span class="font-medium">Shampoos Premium</span> <p class="text-xs text-gray-200 mt-1">Fórmulas especializadas</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#condicionadores" onclick="showPage('condicionadores')"> <span class="font-medium">Condicionadores</span> <p class="text-xs text-gray-200 mt-1">Pelagem sedosa</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#perfumes-exclusivos" onclick="showPage('perfumes-exclusivos')"> <span class="font-medium">Perfumes Exclusivos</span> <p class="text-xs text-gray-200 mt-1">Fragrâncias delicadas</p></a> <a class="block px-6 py-3 text-white hover:bg-white hover:bg-opacity-20 transition-all duration-300 hover:pl-8" href="#kit-tosa-profissional" onclick="showPage('kit-tosa-profissional')"> <span class="font-medium">Kit Tosa Profissional</span> <p class="text-xs text-gray-200 mt-1">Ferramentas premium</p></a>
-</div>
-</div><a class="menu-item px-6 py-3 text-navy font-bold hover:text-tiffany transition-all duration-300 rounded-lg hover:bg-tiffany-light hover:bg-opacity-20" href="#contact" onclick="showPage('home')"> Contato </a>
-</nav><!-- CTA Button -->
-<div class="hidden lg:flex items-center space-x-4"><button class="bg-gradient-to-r from-tiffany to-tiffany-dark text-white px-8 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300" onclick="showPage('checkout')"> 🛒 Carrinho </button>
-</div><!-- Mobile Menu Button --> <button class="xl:hidden text-navy" id="mobile-menu-button" onclick="toggleMobileMenu()">
-<svg class="w-8 h-8" fill="none" id="menu-icon" stroke="currentColor" viewbox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg>
-<svg class="w-8 h-8 hidden" fill="none" id="close-icon" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg></button>
-</div><!-- Mobile Menu -->
-<div class="xl:hidden fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm transform -translate-y-full opacity-0 invisible transition-all duration-500 ease-out z-50" id="mobile-menu">
-<div class="absolute inset-x-0 top-0 bg-white rounded-b-3xl shadow-2xl max-h-screen overflow-y-auto"><!-- Header do Menu Moderno -->
-<div class="relative bg-gradient-to-br from-tiffany via-cyan-600 to-blue-700 px-6 py-8 rounded-b-3xl"><!-- Padrão de fundo -->
-<div class="absolute inset-0 opacity-10">
-<div class="absolute top-0 right-0 w-32 h-32 bg-white rounded-full translate-x-16 -translate-y-16"></div>
-<div class="absolute bottom-0 left-0 w-24 h-24 bg-white rounded-full -translate-x-12 translate-y-12"></div>
-</div>
-<div class="relative flex items-center justify-between">
-<div class="flex items-center space-x-4">
-<div class="bg-white bg-opacity-20 backdrop-blur-sm rounded-2xl p-3 shadow-lg"><span class="text-3xl">🏪</span>
-</div>
-<div>
-<h3 class="text-white font-black text-xl">Reino Animalia</h3>
-<p class="text-cyan-100 text-sm font-medium">Explore nossos produtos premium</p>
-</div>
-</div><!-- Botão fechar moderno --> <button class="bg-white bg-opacity-20 backdrop-blur-sm rounded-full p-2 hover:bg-opacity-30 transition-all duration-300" onclick="closeMobileMenu()">
-<svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewbox="0 0 24 24"><path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"></path>
-</svg></button>
-</div>
-</div>
-<div class="px-6 py-8 space-y-3"><!-- Início Moderno --> <a class="flex items-center space-x-4 text-navy font-bold hover:text-tiffany transition-all duration-300 py-4 px-5 rounded-2xl group hover:bg-gradient-to-r hover:from-tiffany hover:from-opacity-5 hover:to-cyan-50 border border-transparent hover:border-tiffany hover:border-opacity-20" href="#home" onclick="showPage('home'); closeMobileMenu();">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"><span class="text-xl text-white">🏠</span>
-</div>
-<div class="flex-1"><span class="text-lg font-bold">Início</span>
-<p class="text-sm text-gray-500 group-hover:text-tiffany transition-colors duration-300">Página principal</p>
-</div>
-<div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<svg class="w-5 h-5 text-tiffany" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" fill-rule="evenodd"></path>
-</svg>
-</div></a> <!-- Suplementos Premium Mobile Moderno -->
-<div class="bg-gradient-to-r from-purple-50 to-pink-50 rounded-2xl overflow-hidden border border-purple-100"><button class="flex items-center justify-between w-full text-navy font-bold hover:text-purple-700 transition-all duration-300 py-4 px-5 group" onclick="toggleMobileSubmenu('suplementos')">
-<div class="flex items-center space-x-4">
-<div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"><span class="text-xl text-white">💊</span>
-</div>
-<div class="text-left"><span class="text-lg font-bold block">Suplementos Premium</span> <span class="text-sm text-purple-600">Vitaminas e nutrição</span>
-</div>
-</div>
-<div class="bg-white rounded-full p-2 shadow-md group-hover:shadow-lg transition-all duration-300">
-<svg class="w-4 h-4 transform transition-transform duration-300 text-purple-600" fill="currentColor" id="suplementos-arrow" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg>
-</div></button>
-<div class="hidden bg-white mx-3 mb-3 rounded-xl overflow-hidden shadow-inner" id="suplementos-submenu"><a class="flex items-center space-x-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#vitaminas-minerais" onclick="showPage('vitaminas-minerais'); closeMobileMenu();">
-<div class="w-2 h-2 bg-purple-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Vitaminas &amp; Minerais</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#probioticos" onclick="showPage('probioticos'); closeMobileMenu();">
-<div class="w-2 h-2 bg-purple-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Probióticos Avançados</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#omega" onclick="showPage('omega'); closeMobileMenu();">
-<div class="w-2 h-2 bg-purple-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Ômega 3 &amp; 6 Premium</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-purple-600 hover:bg-purple-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#articulacoes" onclick="showPage('articulacoes'); closeMobileMenu();">
-<div class="w-2 h-2 bg-purple-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Articulações &amp; Mobilidade</span> </a>
-</div>
-</div><!-- Medicamentos Mobile Moderno -->
-<div class="bg-gradient-to-r from-red-50 to-orange-50 rounded-2xl overflow-hidden border border-red-100"><button class="flex items-center justify-between w-full text-navy font-bold hover:text-red-700 transition-all duration-300 py-4 px-5 group" onclick="toggleMobileSubmenu('medicamentos')">
-<div class="flex items-center space-x-4">
-<div class="bg-gradient-to-br from-red-500 to-orange-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"><span class="text-xl text-white">🏥</span>
-</div>
-<div class="text-left"><span class="text-lg font-bold block">Medicamentos</span> <span class="text-sm text-red-600">Farmácia veterinária</span>
-</div>
-</div>
-<div class="bg-white rounded-full p-2 shadow-md group-hover:shadow-lg transition-all duration-300">
-<svg class="w-4 h-4 transform transition-transform duration-300 text-red-600" fill="currentColor" id="medicamentos-arrow" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg>
-</div></button>
-<div class="hidden bg-white mx-3 mb-3 rounded-xl overflow-hidden shadow-inner" id="medicamentos-submenu"><a class="flex items-center space-x-3 text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#vermifugos" onclick="showPage('vermifugos'); closeMobileMenu();">
-<div class="w-2 h-2 bg-red-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Vermífugos Eficazes</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#antibioticos" onclick="showPage('antibioticos'); closeMobileMenu();">
-<div class="w-2 h-2 bg-red-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Antibióticos Veterinários</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#anti-inflamatorios" onclick="showPage('anti-inflamatorios'); closeMobileMenu();">
-<div class="w-2 h-2 bg-red-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Anti-inflamatórios</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-red-600 hover:bg-red-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#homeopatia" onclick="showPage('homeopatia'); closeMobileMenu();">
-<div class="w-2 h-2 bg-red-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Homeopatia Pet</span> </a>
-</div>
-</div><!-- Nutrição Natural Mobile Moderno -->
-<div class="bg-gradient-to-r from-green-50 to-emerald-50 rounded-2xl overflow-hidden border border-green-100"><button class="flex items-center justify-between w-full text-navy font-bold hover:text-green-700 transition-all duration-300 py-4 px-5 group" onclick="toggleMobileSubmenu('nutricao')">
-<div class="flex items-center space-x-4">
-<div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"><span class="text-xl text-white">🥘</span>
-</div>
-<div class="text-left"><span class="text-lg font-bold block">Nutrição Natural</span> <span class="text-sm text-green-600">Alimentação premium</span>
-</div>
-</div>
-<div class="bg-white rounded-full p-2 shadow-md group-hover:shadow-lg transition-all duration-300">
-<svg class="w-4 h-4 transform transition-transform duration-300 text-green-600" fill="currentColor" id="nutricao-arrow" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg>
-</div></button>
-<div class="hidden bg-white mx-3 mb-3 rounded-xl overflow-hidden shadow-inner" id="nutricao-submenu"><a class="flex items-center space-x-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#alimentacao-natural" onclick="showPage('alimentacao-natural'); closeMobileMenu();">
-<div class="w-2 h-2 bg-green-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Alimentação Natural</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#petiscos-funcionais" onclick="showPage('petiscos-funcionais'); closeMobileMenu();">
-<div class="w-2 h-2 bg-green-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Petiscos Funcionais</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-green-600 hover:bg-green-50 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#biscoitos-artesanais" onclick="showPage('biscoitos-artesanais'); closeMobileMenu();">
-<div class="w-2 h-2 bg-green-400 rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Biscoitos Artesanais</span> </a>
-</div>
-</div><!-- Spa Pet Mobile Moderno -->
-<div class="bg-gradient-to-r from-tiffany from-opacity-10 to-cyan-50 rounded-2xl overflow-hidden border border-tiffany border-opacity-20"><button class="flex items-center justify-between w-full text-navy font-bold hover:text-tiffany transition-all duration-300 py-4 px-5 group" onclick="toggleMobileSubmenu('spa')">
-<div class="flex items-center space-x-4">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"><span class="text-xl text-white">🛁</span>
-</div>
-<div class="text-left"><span class="text-lg font-bold block">Spa Pet</span> <span class="text-sm text-tiffany">Beleza e higiene</span>
-</div>
-</div>
-<div class="bg-white rounded-full p-2 shadow-md group-hover:shadow-lg transition-all duration-300">
-<svg class="w-4 h-4 transform transition-transform duration-300 text-tiffany" fill="currentColor" id="spa-arrow" viewbox="0 0 20 20"><path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"></path>
-</svg>
-</div></button>
-<div class="hidden bg-white mx-3 mb-3 rounded-xl overflow-hidden shadow-inner" id="spa-submenu"><a class="flex items-center space-x-3 text-gray-700 hover:text-tiffany hover:bg-tiffany hover:bg-opacity-10 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#shampoos-premium" onclick="showPage('shampoos-premium'); closeMobileMenu();">
-<div class="w-2 h-2 bg-tiffany rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Shampoos Premium</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-tiffany hover:bg-tiffany hover:bg-opacity-10 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#condicionadores" onclick="showPage('condicionadores'); closeMobileMenu();">
-<div class="w-2 h-2 bg-tiffany rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Condicionadores</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-tiffany hover:bg-tiffany hover:bg-opacity-10 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#perfumes-exclusivos" onclick="showPage('perfumes-exclusivos'); closeMobileMenu();">
-<div class="w-2 h-2 bg-tiffany rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Perfumes Exclusivos</span> </a> <a class="flex items-center space-x-3 text-gray-700 hover:text-tiffany hover:bg-tiffany hover:bg-opacity-10 transition-all duration-300 py-3 px-4 border-b border-gray-100 last:border-b-0 group" href="#kit-tosa-profissional" onclick="showPage('kit-tosa-profissional'); closeMobileMenu();">
-<div class="w-2 h-2 bg-tiffany rounded-full group-hover:scale-125 transition-transform duration-300"></div><span class="font-medium">Kit Tosa Profissional</span> </a>
-</div>
-</div><!-- Contato Moderno --> <a class="flex items-center space-x-4 text-navy font-bold hover:text-tiffany transition-all duration-300 py-4 px-5 rounded-2xl group hover:bg-gradient-to-r hover:from-tiffany hover:from-opacity-5 hover:to-cyan-50 border border-transparent hover:border-tiffany hover:border-opacity-20" href="#contact" onclick="showPage('home'); closeMobileMenu();">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-xl p-3 shadow-lg group-hover:shadow-xl group-hover:scale-110 transition-all duration-300"><span class="text-xl text-white">📞</span>
-</div>
-<div class="flex-1"><span class="text-lg font-bold">Contato</span>
-<p class="text-sm text-gray-500 group-hover:text-tiffany transition-colors duration-300">Fale conosco</p>
-</div>
-<div class="opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-<svg class="w-5 h-5 text-tiffany" fill="currentColor" viewbox="0 0 20 20"><path clip-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" fill-rule="evenodd"></path>
-</svg>
-</div></a> <!-- CTA Button Moderno -->
-<div class="pt-6 mt-6 border-t border-gray-200"><button class="w-full bg-gradient-to-r from-tiffany to-cyan-600 text-white px-8 py-5 rounded-2xl font-black text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3 relative overflow-hidden" onclick="showPage('checkout'); closeMobileMenu();">
-<div class="absolute inset-0 bg-gradient-to-r from-white to-transparent opacity-0 hover:opacity-20 transition-opacity duration-300"></div><span class="text-2xl relative z-10">🛒</span> <span class="text-lg relative z-10">Carrinho</span> </button>
-</div>
-</div>
-</div>
-</div>
-</div>
-</header><!-- HOME PAGE -->
-<div class="page active" id="home"><!-- Hero Section Premium -->
-<section class="relative min-h-screen flex items-center hero-pattern overflow-hidden">
-<div class="absolute inset-0 bg-gradient-to-br from-navy via-tiffany-dark to-tiffany opacity-95"></div><!-- Floating Elements -->
-<div class="absolute top-20 left-10 floating">
-<div class="bg-white bg-opacity-20 rounded-full p-4"><span class="text-4xl">🐕</span>
-</div>
-</div>
-<div class="absolute top-40 right-20 floating" style="animation-delay: -1s;">
-<div class="bg-white bg-opacity-20 rounded-full p-4"><span class="text-4xl">🐱</span>
-</div>
-</div>
-<div class="absolute bottom-40 left-20 floating" style="animation-delay: -2s;">
-<div class="bg-white bg-opacity-20 rounded-full p-4"><span class="text-4xl">🦜</span>
-</div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-<div class="slide-in">
-<h2 class="text-6xl lg:text-7xl font-black text-white mb-6 leading-tight">Saúde <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 to-orange-400">Premium</span> <br/>
-        para seu Pet</h2>
-<p class="text-xl text-tiffany-light mb-8 leading-relaxed max-w-lg">Produtos veterinários de alta qualidade para cães, gatos e animais silvestres. Sua farmácia de confiança com produtos premium selecionados.</p>
-<div class="flex flex-col sm:flex-row gap-4 mb-8"><button class="bg-gradient-to-r from-yellow-400 to-orange-400 text-navy px-8 py-4 rounded-full font-black text-lg shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"> 🛍️ Explorar Produtos </button> <button class="glass-effect text-white px-8 py-4 rounded-full font-bold text-lg hover:bg-white hover:bg-opacity-20 transition-all duration-300"> 💬 Consultoria Gratuita </button>
-</div>
-<div class="flex items-center space-x-8 text-white">
-<div class="text-center">
-<div class="text-3xl font-black">
-          500+
-         </div>
-<div class="text-sm text-tiffany-light">
-          Produtos Premium
-         </div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black">
-          50k+
-         </div>
-<div class="text-sm text-tiffany-light">
-          Pets Atendidos
-         </div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black">
-          15+
-         </div>
-<div class="text-sm text-tiffany-light">
-          Anos de Experiência
-         </div>
-</div>
-</div>
-</div>
-<div class="relative">
-<div class="bg-white bg-opacity-10 rounded-3xl p-8 backdrop-filter backdrop-blur-lg">
-<div class="text-center mb-6">
-<div class="bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-4 shadow-2xl"><span class="text-6xl">🏪</span>
-</div>
-<h3 class="text-2xl font-bold text-white mb-2">Atendimento Premium</h3>
-<p class="text-tiffany-light">Produtos selecionados e suporte especializado</p>
-</div>
-<div class="space-y-4">
-<div class="flex items-center space-x-3 text-white">
-<div class="bg-green-400 rounded-full w-3 h-3"></div><span>Consultoria gratuita de produtos</span>
-</div>
-<div class="flex items-center space-x-3 text-white">
-<div class="bg-green-400 rounded-full w-3 h-3"></div><span>Produtos importados e nacionais</span>
-</div>
-<div class="flex items-center space-x-3 text-white">
-<div class="bg-green-400 rounded-full w-3 h-3"></div><span>Entrega expressa em 24h</span>
-</div>
-<div class="flex items-center space-x-3 text-white">
-<div class="bg-green-400 rounded-full w-3 h-3"></div><span>Garantia de qualidade 100%</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><!-- Categories Premium -->
-<section class="py-20 bg-white relative">
-<div class="container mx-auto px-6">
-<div class="text-center mb-16"><span class="bg-tiffany text-white px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider mb-4 inline-block"> Produtos Premium </span>
-<h3 class="text-5xl font-black text-navy mb-6">Categorias Exclusivas</h3>
-<p class="text-xl text-gray-600 max-w-3xl mx-auto">Descubra nossa seleção premium de produtos veterinários, cuidadosamente escolhidos para oferecer o melhor cuidado ao seu pet</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8"><!-- Suplementos -->
-<div class="card-hover bg-gradient-to-br from-purple-500 to-purple-700 rounded-3xl p-8 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -mr-16 -mt-16"></div>
-<div class="relative z-10">
-<div class="bg-white bg-opacity-20 rounded-2xl w-16 h-16 flex items-center justify-center mb-6"><span class="text-3xl">💊</span>
-</div>
-<h4 class="text-2xl font-bold mb-4">Suplementos Premium</h4>
-<p class="text-purple-100 mb-6 text-sm leading-relaxed">Vitaminas, probióticos e suplementos de alta qualidade para a saúde completa do seu pet</p><button class="bg-white text-purple-700 px-6 py-3 rounded-full font-bold hover:bg-purple-50 transition-all duration-300 transform hover:scale-105" onclick="showPage('vitaminas-minerais')"> Ver Produtos → </button>
-</div>
-</div><!-- Medicamentos -->
-<div class="card-hover bg-gradient-to-br from-red-500 to-red-700 rounded-3xl p-8 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -mr-16 -mt-16"></div>
-<div class="relative z-10">
-<div class="bg-white bg-opacity-20 rounded-2xl w-16 h-16 flex items-center justify-center mb-6"><span class="text-3xl">🏥</span>
-</div>
-<h4 class="text-2xl font-bold mb-4">Medicamentos</h4>
-<p class="text-red-100 mb-6 text-sm leading-relaxed">Vermífugos, antibióticos e anti-inflamatórios com eficácia comprovada</p><button class="bg-white text-red-700 px-6 py-3 rounded-full font-bold hover:bg-red-50 transition-all duration-300 transform hover:scale-105" onclick="showPage('vermifugos')"> Ver Produtos → </button>
-</div>
-</div><!-- Alimentação -->
-<div class="card-hover bg-gradient-to-br from-green-500 to-green-700 rounded-3xl p-8 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -mr-16 -mt-16"></div>
-<div class="relative z-10">
-<div class="bg-white bg-opacity-20 rounded-2xl w-16 h-16 flex items-center justify-center mb-6"><span class="text-3xl">🥘</span>
-</div>
-<h4 class="text-2xl font-bold mb-4">Nutrição Natural</h4>
-<p class="text-green-100 mb-6 text-sm leading-relaxed">Alimentação natural, petiscos funcionais e biscoitos artesanais</p><button class="bg-white text-green-700 px-6 py-3 rounded-full font-bold hover:bg-green-50 transition-all duration-300 transform hover:scale-105"> Ver Produtos → </button>
-</div>
-</div><!-- Spa Pet -->
-<div class="card-hover bg-gradient-to-br from-tiffany to-tiffany-dark rounded-3xl p-8 text-white relative overflow-hidden">
-<div class="absolute top-0 right-0 w-32 h-32 bg-white bg-opacity-10 rounded-full -mr-16 -mt-16"></div>
-<div class="relative z-10">
-<div class="bg-white bg-opacity-20 rounded-2xl w-16 h-16 flex items-center justify-center mb-6"><span class="text-3xl">🛁</span>
-</div>
-<h4 class="text-2xl font-bold mb-4">Spa Pet</h4>
-<p class="text-tiffany-light mb-6 text-sm leading-relaxed">Linha completa de banho e tosa com produtos premium</p><button class="bg-white text-tiffany-dark px-6 py-3 rounded-full font-bold hover:bg-tiffany-light hover:bg-opacity-20 transition-all duration-300 transform hover:scale-105" onclick="showPage('shampoos-premium')"> Ver Produtos → </button>
-</div>
-</div>
-</div>
-</div>
-</section><!-- Contact Premium -->
-<section class="py-20 bg-gradient-to-br from-tiffany to-tiffany-dark relative overflow-hidden" id="contact">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-navy rounded-full -translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-16"><span class="bg-white text-tiffany px-6 py-2 rounded-full font-bold text-sm uppercase tracking-wider mb-6 inline-block"> Atendimento Premium </span>
-<h3 class="text-5xl font-black text-white mb-6">Entre em Contato</h3>
-<p class="text-xl text-tiffany-light max-w-3xl mx-auto">Atendimento personalizado com equipe especializada pronta para ajudar você e seu pet</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
-<div class="card-hover glass-effect rounded-3xl p-8 text-center text-white">
-<div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"><span class="text-3xl">📞</span>
-</div>
-<h4 class="text-xl font-bold mb-3">Telefone</h4>
-<p class="text-tiffany-light mb-4">(11) 9999-9999</p>
-<p class="text-sm text-tiffany-light">Horário comercial</p>
-</div>
-<div class="card-hover glass-effect rounded-3xl p-8 text-center text-white">
-<div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"><span class="text-3xl">💬</span>
-</div>
-<h4 class="text-xl font-bold mb-3">WhatsApp</h4>
-<p class="text-tiffany-light mb-4">(11) 99999-9999</p>
-<p class="text-sm text-tiffany-light">Chat especializado</p>
-</div>
-<div class="card-hover glass-effect rounded-3xl p-8 text-center text-white">
-<div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"><span class="text-3xl">📧</span>
-</div>
-<h4 class="text-xl font-bold mb-3">Email</h4>
-<p class="text-tiffany-light mb-4">animaliahealthpetcontato@gmail.com</p>
-<p class="text-sm text-tiffany-light">Resposta rápida</p>
-</div>
-<div class="card-hover glass-effect rounded-3xl p-8 text-center text-white">
-<div class="bg-gradient-to-br from-pink-500 to-purple-600 bg-opacity-80 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6 shadow-lg"><span class="text-3xl">📷</span>
-</div>
-<h4 class="text-xl font-bold mb-3">Instagram</h4>
-<p class="text-tiffany-light mb-4">@reinoanimalia_pet</p>
-<p class="text-sm text-tiffany-light">Dicas e novidades</p>
-</div>
-<div class="card-hover glass-effect rounded-3xl p-8 text-center text-white">
-<div class="bg-white bg-opacity-20 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-6"><span class="text-3xl">📍</span>
-</div>
-<h4 class="text-xl font-bold mb-3">Loja 100% Online</h4>
-<p class="text-tiffany-light mb-4">Atendimento Digital</p>
-<p class="text-sm text-tiffany-light">Todo Brasil</p>
-</div>
-</div>
-<div class="text-center mt-12"><button class="bg-white text-tiffany px-12 py-4 rounded-full font-black text-lg shadow-2xl hover:shadow-3xl transform hover:scale-105 transition-all duration-300"> 💬 Falar Conosco Agora </button>
-</div>
-</div>
-</section>
-</div><!-- SHAMPOOS PREMIUM PAGE -->
-<div class="page" id="shampoos-premium"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-tiffany via-cyan-600 to-blue-700 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-white to-blue-100 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">🧴</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Shampoos Premium</h1>
-<p class="text-xl text-cyan-100 max-w-4xl mx-auto leading-relaxed">Fórmulas especializadas com ingredientes naturais para limpeza profunda, hidratação e cuidado específico da pelagem</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">✨</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Shampoo Hidratante Luxo</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula premium com óleo de argan e queratina para pelagem ressecada e danificada</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-tiffany rounded-full"></span> <span class="text-sm text-gray-600">Óleo de argan marroquino</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-tiffany rounded-full"></span> <span class="text-sm text-gray-600">Queratina hidrolisada</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-tiffany rounded-full"></span> <span class="text-sm text-gray-600">Fragrância lavanda francesa</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-tiffany mb-2">
-         R$ 89,90
-        </div><button class="bg-gradient-to-r from-tiffany to-cyan-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300" onclick="showPage('checkout')"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌿</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Shampoo Hipoalergênico</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula suave com aveia coloidal e camomila para peles sensíveis e alérgicas</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Aveia coloidal orgânica</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Extrato de camomila</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">pH balanceado</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-cyan-600 mb-2">
-         R$ 75,90
-        </div><button class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🦠</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Shampoo Antifúngico</h3>
-<p class="text-gray-600 mb-6 text-center">Tratamento especializado com cetoconazol e tea tree para fungos e dermatites</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Cetoconazol 2%</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de tea tree</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Ação antimicrobiana</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-blue-600 mb-2">
-         R$ 125,90
-        </div><button class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 4 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌸</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Shampoo Branqueador</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula especial para pelagem branca com violeta genciana e extratos clareadores</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Violeta genciana</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Extrato de limão</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Remove manchas amareladas</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-purple-600 mb-2">
-         R$ 95,90
-        </div><button class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 5 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌱</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Shampoo Orgânico Natural</h3>
-<p class="text-gray-600 mb-6 text-center">100% natural com aloe vera, coco e ingredientes orgânicos certificados</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Aloe vera orgânica</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de coco virgem</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Sem sulfatos ou parabenos</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-green-600 mb-2">
-         R$ 105,90
-        </div><button class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 6 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🔥</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Shampoo Anti-Pulgas</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula potente com permetrina e citronela para eliminar pulgas e carrapatos</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Permetrina 1%</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de citronela</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Ação repelente duradoura</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-orange-600 mb-2">
-         R$ 65,90
-        </div><button class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- CONDICIONADORES PAGE -->
-<div class="page" id="condicionadores"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-pink-600 via-purple-700 to-indigo-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 right-0 w-96 h-96 bg-white rounded-full translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-pink-300 rounded-full -translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-white to-pink-100 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">💆</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Condicionadores Premium</h1>
-<p class="text-xl text-pink-100 max-w-4xl mx-auto leading-relaxed">Tratamentos intensivos para pelagem sedosa, desembaraçamento fácil e proteção duradoura com ingredientes nobres</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-pink-500 to-purple-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">✨</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Condicionador Sedoso Luxo</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula premium com seda hidrolisada e óleo de macadâmia para máximo brilho e maciez</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> <span class="text-sm text-gray-600">Proteína de seda hidrolisada</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de macadâmia australiano</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> <span class="text-sm text-gray-600">Vitamina E antioxidante</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-pink-600 mb-2">
-         R$ 95,90
-        </div><button class="bg-gradient-to-r from-pink-500 to-purple-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌊</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Condicionador Desembaraçante</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula especial com silicones nobres para facilitar a escovação e eliminar nós</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Dimeticone premium</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Pantenol (Pró-vitamina B5)</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Ação antiestática</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-purple-600 mb-2">
-         R$ 85,90
-        </div><button class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-indigo-500 to-blue-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">💧</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Condicionador Hidratação Profunda</h3>
-<p class="text-gray-600 mb-6 text-center">Tratamento intensivo com ácido hialurônico e ceramidas para pelagem ressecada</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> <span class="text-sm text-gray-600">Ácido hialurônico</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> <span class="text-sm text-gray-600">Ceramidas reconstrutoras</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> <span class="text-sm text-gray-600">Colágeno hidrolisado</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-indigo-600 mb-2">
-         R$ 115,90
-        </div><button class="bg-gradient-to-r from-indigo-500 to-blue-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 4 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌹</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Condicionador Reparador</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula reconstrutora com aminoácidos e proteínas para pelagem danificada</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> <span class="text-sm text-gray-600">Aminoácidos essenciais</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> <span class="text-sm text-gray-600">Proteína do trigo</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de rosa mosqueta</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-rose-600 mb-2">
-         R$ 105,90
-        </div><button class="bg-gradient-to-r from-rose-500 to-pink-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 5 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-emerald-500 to-teal-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌿</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Condicionador Natural Orgânico</h3>
-<p class="text-gray-600 mb-6 text-center">100% natural com manteiga de karité e óleos essenciais orgânicos certificados</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> <span class="text-sm text-gray-600">Manteiga de karité pura</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de jojoba orgânico</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-emerald-500 rounded-full"></span> <span class="text-sm text-gray-600">Livre de químicos</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-emerald-600 mb-2">
-         R$ 125,90
-        </div><button class="bg-gradient-to-r from-emerald-500 to-teal-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 6 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-violet-500 to-purple-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🦄</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Condicionador Anti-Idade</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula anti-aging com peptídeos e antioxidantes para pets seniores</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-violet-500 rounded-full"></span> <span class="text-sm text-gray-600">Peptídeos regeneradores</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-violet-500 rounded-full"></span> <span class="text-sm text-gray-600">Coenzima Q10</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-violet-500 rounded-full"></span> <span class="text-sm text-gray-600">Extrato de ginseng</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-violet-600 mb-2">
-         R$ 145,90
-        </div><button class="bg-gradient-to-r from-violet-500 to-purple-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- PERFUMES EXCLUSIVOS PAGE -->
-<div class="page" id="perfumes-exclusivos"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-rose-600 via-pink-700 to-purple-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-yellow-300 rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-rose-300 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-white to-rose-100 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">🌸</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Perfumes Exclusivos</h1>
-<p class="text-xl text-rose-100 max-w-4xl mx-auto leading-relaxed">Fragrâncias delicadas e sofisticadas desenvolvidas especialmente para pets, com notas aromáticas suaves e duradouras</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-rose-500 to-pink-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌹</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Perfume Rose Garden</h3>
-<p class="text-gray-600 mb-6 text-center">Fragrância floral sofisticada com notas de rosa búlgara, peônia e almíscar branco</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> <span class="text-sm text-gray-600">Rosa búlgara premium</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> <span class="text-sm text-gray-600">Peônia delicada</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-rose-500 rounded-full"></span> <span class="text-sm text-gray-600">Almíscar branco suave</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-rose-600 mb-2">
-         R$ 155,90
-        </div><button class="bg-gradient-to-r from-rose-500 to-pink-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">💜</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Perfume Lavender Dreams</h3>
-<p class="text-gray-600 mb-6 text-center">Fragrância relaxante com lavanda francesa, bergamota e cedro para efeito calmante</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Lavanda francesa pura</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Bergamota italiana</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Cedro do Atlas</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-purple-600 mb-2">
-         R$ 135,90
-        </div><button class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-yellow-500 to-orange-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🍊</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Perfume Citrus Fresh</h3>
-<p class="text-gray-600 mb-6 text-center">Fragrância energizante com laranja doce, limão siciliano e capim-limão</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-yellow-500 rounded-full"></span> <span class="text-sm text-gray-600">Laranja doce brasileira</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-yellow-500 rounded-full"></span> <span class="text-sm text-gray-600">Limão siciliano</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-yellow-500 rounded-full"></span> <span class="text-sm text-gray-600">Capim-limão refrescante</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-yellow-600 mb-2">
-         R$ 125,90
-        </div><button class="bg-gradient-to-r from-yellow-500 to-orange-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 4 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌿</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Perfume Forest Breeze</h3>
-<p class="text-gray-600 mb-6 text-center">Fragrância amadeirada com eucalipto, pinho e sândalo para conexão com a natureza</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Eucalipto australiano</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Pinho siberiano</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Sândalo indiano</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-green-600 mb-2">
-         R$ 145,90
-        </div><button class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 5 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌊</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Perfume Ocean Mist</h3>
-<p class="text-gray-600 mb-6 text-center">Fragrância aquática com brisa marinha, algas e notas minerais refrescantes</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Brisa marinha natural</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Extrato de algas</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Notas minerais</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-blue-600 mb-2">
-         R$ 165,90
-        </div><button class="bg-gradient-to-r from-blue-500 to-cyan-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 6 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-amber-500 to-yellow-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🍯</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Perfume Honey Vanilla</h3>
-<p class="text-gray-600 mb-6 text-center">Fragrância doce e aconchegante com mel silvestre, baunilha e âmbar dourado</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-amber-500 rounded-full"></span> <span class="text-sm text-gray-600">Mel silvestre puro</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-amber-500 rounded-full"></span> <span class="text-sm text-gray-600">Baunilha de Madagascar</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-amber-500 rounded-full"></span> <span class="text-sm text-gray-600">Âmbar dourado</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-amber-600 mb-2">
-         R$ 175,90
-        </div><button class="bg-gradient-to-r from-amber-500 to-yellow-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- VITAMINAS & MINERAIS PAGE -->
-<div class="page" id="vitaminas-minerais"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-purple-600 via-purple-700 to-purple-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-yellow-400 rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-pink-400 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">💊</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Vitaminas &amp; Minerais Premium</h1>
-<p class="text-xl text-purple-100 max-w-4xl mx-auto leading-relaxed">Complexos vitamínicos de alta qualidade para fortalecer o sistema imunológico e garantir a vitalidade do seu pet</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌟</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Multivitamínico Completo</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula completa com 25 vitaminas e minerais essenciais para cães e gatos de todas as idades</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Vitaminas A, B, C, D, E</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Cálcio, Ferro, Zinco</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Antioxidantes naturais</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-purple-700 mb-2">
-         R$ 89,90
-        </div><button class="bg-gradient-to-r from-purple-500 to-purple-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">⚡</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Complexo B Energético</h3>
-<p class="text-gray-600 mb-6 text-center">Suplemento especializado em vitaminas do complexo B para energia e metabolismo saudável</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">B1, B2, B6, B12</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Ácido fólico</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Biotina para pelagem</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-orange-700 mb-2">
-         R$ 65,90
-        </div><button class="bg-gradient-to-r from-orange-500 to-orange-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🦴</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Cálcio + Vitamina D</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula especial para fortalecimento ósseo e dental, ideal para filhotes e pets idosos</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Cálcio quelado</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Vitamina D3</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Magnésio e Fósforo</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-green-700 mb-2">
-         R$ 75,90
-        </div><button class="bg-gradient-to-r from-green-500 to-green-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- PROBIÓTICOS PAGE -->
-<div class="page" id="probioticos"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-green-600 via-green-700 to-green-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 right-0 w-96 h-96 bg-blue-400 rounded-full translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-teal-400 rounded-full -translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-blue-400 to-teal-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">🦠</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Probióticos Avançados</h1>
-<p class="text-xl text-green-100 max-w-4xl mx-auto leading-relaxed">Fórmulas avançadas com bilhões de bactérias benéficas para uma saúde intestinal completa e sistema imunológico fortalecido</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-green-500 to-green-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌱</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Probiótico Multi-Cepas</h3>
-<p class="text-gray-600 mb-6 text-center">10 bilhões de UFC com 8 cepas diferentes para restaurar e manter o equilíbrio da flora intestinal</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Lactobacillus acidophilus</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Bifidobacterium bifidum</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Prebióticos inclusos</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-green-700 mb-2">
-         R$ 125,90
-        </div><button class="bg-gradient-to-r from-green-500 to-green-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🛡️</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Probiótico Imunidade</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula especializada para fortalecer o sistema imunológico com probióticos e vitaminas</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">5 bilhões de UFC</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Vitamina C e E</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Zinco e Selênio</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-blue-700 mb-2">
-         R$ 98,90
-        </div><button class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-teal-500 to-teal-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🐕</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Probiótico Filhotes</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula suave especialmente desenvolvida para filhotes de 2 a 12 meses de idade</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-teal-500 rounded-full"></span> <span class="text-sm text-gray-600">Cepas específicas para filhotes</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-teal-500 rounded-full"></span> <span class="text-sm text-gray-600">Sabor natural</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-teal-500 rounded-full"></span> <span class="text-sm text-gray-600">Fácil administração</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-teal-700 mb-2">
-         R$ 85,90
-        </div><button class="bg-gradient-to-r from-teal-500 to-teal-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- ÔMEGA 3 & 6 PAGE -->
-<div class="page" id="omega"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-blue-600 via-blue-700 to-blue-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-cyan-400 rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-indigo-400 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">🐟</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Ômega 3 &amp; 6 Premium</h1>
-<p class="text-xl text-blue-100 max-w-4xl mx-auto leading-relaxed">Ácidos graxos essenciais de alta pureza para pelagem brilhante, pele saudável e função cerebral otimizada</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">✨</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Ômega 3 Óleo de Peixe</h3>
-<p class="text-gray-600 mb-6 text-center">Óleo de peixe purificado com alta concentração de EPA e DHA para máxima absorção</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">1000mg por cápsula</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">EPA 300mg + DHA 200mg</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Livre de metais pesados</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-blue-700 mb-2">
-         R$ 145,90
-        </div><button class="bg-gradient-to-r from-blue-500 to-blue-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌿</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Ômega 3-6-9 Vegetal</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula vegetal completa com ômegas 3, 6 e 9 extraídos de sementes e algas marinhas</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de linhaça</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Óleo de borragem</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">DHA de algas</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-cyan-700 mb-2">
-         R$ 115,90
-        </div><button class="bg-gradient-to-r from-cyan-500 to-cyan-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🧠</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Ômega Brain Support</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula especial para função cerebral com DHA concentrado, ideal para pets idosos</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> <span class="text-sm text-gray-600">DHA ultra concentrado</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> <span class="text-sm text-gray-600">Vitamina E antioxidante</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-indigo-500 rounded-full"></span> <span class="text-sm text-gray-600">Fosfolipídios</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-indigo-700 mb-2">
-         R$ 165,90
-        </div><button class="bg-gradient-to-r from-indigo-500 to-indigo-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- ARTICULAÇÕES & MOBILIDADE PAGE -->
-<div class="page" id="articulacoes"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-orange-600 via-orange-700 to-red-700 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 right-0 w-96 h-96 bg-yellow-400 rounded-full translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-red-400 rounded-full -translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-yellow-400 to-orange-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">🦴</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Articulações &amp; Mobilidade</h1>
-<p class="text-xl text-orange-100 max-w-4xl mx-auto leading-relaxed">Suplementos avançados com condroitina, glucosamina e colágeno para manter articulações saudáveis e mobilidade plena</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">💪</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Glucosamina + Condroitina</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula clássica com glucosamina e condroitina para manutenção da cartilagem articular</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Glucosamina 500mg</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Condroitina 400mg</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">MSM incluído</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-orange-700 mb-2">
-         R$ 135,90
-        </div><button class="bg-gradient-to-r from-orange-500 to-orange-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-red-500 to-red-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🌟</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Colágeno Hidrolisado</h3>
-<p class="text-gray-600 mb-6 text-center">Colágeno tipo II hidrolisado para regeneração de cartilagens e flexibilidade articular</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> <span class="text-sm text-gray-600">Colágeno tipo II</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> <span class="text-sm text-gray-600">Ácido hialurônico</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> <span class="text-sm text-gray-600">Vitamina C</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-red-700 mb-2">
-         R$ 155,90
-        </div><button class="bg-gradient-to-r from-red-500 to-red-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-yellow-500 to-yellow-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🏃</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Mobilidade Sênior</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula completa especialmente desenvolvida para pets idosos com problemas articulares</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-yellow-500 rounded-full"></span> <span class="text-sm text-gray-600">Cúrcuma anti-inflamatória</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-yellow-500 rounded-full"></span> <span class="text-sm text-gray-600">Boswellia serrata</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-yellow-500 rounded-full"></span> <span class="text-sm text-gray-600">Ômega 3 anti-inflamatório</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-yellow-700 mb-2">
-         R$ 185,90
-        </div><button class="bg-gradient-to-r from-yellow-500 to-yellow-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- VERMÍFUGOS PAGE -->
-<div class="page" id="vermifugos"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-red-600 via-red-700 to-red-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-pink-400 rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-orange-400 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-pink-400 to-red-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">🛡️</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Vermífugos Eficazes</h1>
-<p class="text-xl text-red-100 max-w-4xl mx-auto leading-relaxed">Proteção antiparasitária completa com vermífugos de amplo espectro para eliminar e prevenir vermes intestinais</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-red-500 to-red-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🎯</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Vermífugo Amplo Espectro</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula avançada que elimina vermes redondos, chatos e protozoários em dose única</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> <span class="text-sm text-gray-600">Praziquantel + Pirantel</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> <span class="text-sm text-gray-600">Eficaz contra Giardia</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-red-500 rounded-full"></span> <span class="text-sm text-gray-600">Sabor palatável</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-red-700 mb-2">
-         R$ 45,90
-        </div><button class="bg-gradient-to-r from-red-500 to-red-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-pink-500 to-pink-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🐕</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Vermífugo Filhotes</h3>
-<p class="text-gray-600 mb-6 text-center">Fórmula suave especialmente desenvolvida para filhotes a partir de 15 dias de vida</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> <span class="text-sm text-gray-600">Suspensão oral</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> <span class="text-sm text-gray-600">Dosagem por peso</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-pink-500 rounded-full"></span> <span class="text-sm text-gray-600">Sabor frutas vermelhas</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-pink-700 mb-2">
-         R$ 35,90
-        </div><button class="bg-gradient-to-r from-pink-500 to-pink-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🔄</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Vermífugo Preventivo</h3>
-<p class="text-gray-600 mb-6 text-center">Tratamento mensal para prevenção contínua de parasitas intestinais</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Uso mensal</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Comprimidos mastigáveis</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Proteção contínua</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-orange-700 mb-2">
-         R$ 65,90
-        </div><button class="bg-gradient-to-r from-orange-500 to-orange-700 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- KIT TOSA PROFISSIONAL PAGE -->
-<div class="page" id="kit-tosa-profissional"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-tiffany via-cyan-600 to-blue-700 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-white to-blue-100 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">✂️</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Kit Tosa Profissional</h1>
-<p class="text-xl text-cyan-100 max-w-4xl mx-auto leading-relaxed">Ferramentas profissionais de alta qualidade para tosa e acabamento perfeito, desenvolvidas para petshops e profissionais</p>
-</div>
-</div>
-</section><!-- Products Section -->
-<section class="py-20 bg-white">
-<div class="container mx-auto px-6">
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"><!-- Produto 1 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">⚡</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Máquina de Tosa Premium</h3>
-<p class="text-gray-600 mb-6 text-center">Máquina profissional com motor rotativo de alta potência e lâminas de cerâmica</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-tiffany rounded-full"></span> <span class="text-sm text-gray-600">Motor rotativo 7200 RPM</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-tiffany rounded-full"></span> <span class="text-sm text-gray-600">Lâminas de cerâmica</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-tiffany rounded-full"></span> <span class="text-sm text-gray-600">5 pentes guia inclusos</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-tiffany mb-2">
-         R$ 899,90
-        </div><button class="bg-gradient-to-r from-tiffany to-cyan-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300" onclick="showPage('checkout')"> Comprar Agora </button>
-</div>
-</div><!-- Produto 2 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">✂️</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Kit Tesouras Profissionais</h3>
-<p class="text-gray-600 mb-6 text-center">Conjunto com 3 tesouras de aço japonês para corte, desbaste e acabamento</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Aço japonês premium</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Tesoura reta 7"</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-cyan-500 rounded-full"></span> <span class="text-sm text-gray-600">Tesoura desbaste + curva</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-cyan-600 mb-2">
-         R$ 459,90
-        </div><button class="bg-gradient-to-r from-cyan-500 to-blue-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 3 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">💨</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Soprador Profissional</h3>
-<p class="text-gray-600 mb-6 text-center">Soprador de alta potência com controle de velocidade e temperatura variável</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Motor 2800W</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">Velocidade variável</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-blue-500 rounded-full"></span> <span class="text-sm text-gray-600">3 bicos especializados</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-blue-600 mb-2">
-         R$ 1.299,90
-        </div><button class="bg-gradient-to-r from-blue-500 to-indigo-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 4 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🧽</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Mesa de Tosa Hidráulica</h3>
-<p class="text-gray-600 mb-6 text-center">Mesa profissional com regulagem hidráulica e braço com laço de segurança</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Regulagem hidráulica</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Tampo antiderrapante</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-purple-500 rounded-full"></span> <span class="text-sm text-gray-600">Braço com laço ajustável</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-purple-600 mb-2">
-         R$ 1.899,90
-        </div><button class="bg-gradient-to-r from-purple-500 to-pink-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 5 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-green-500 to-emerald-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🎯</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Kit Lâminas Especiais</h3>
-<p class="text-gray-600 mb-6 text-center">Conjunto com 8 lâminas numeradas para diferentes tipos de corte e acabamento</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Lâminas #10, #15, #30, #40</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Aço carbono temperado</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-green-500 rounded-full"></span> <span class="text-sm text-gray-600">Compatível com máquinas</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-green-600 mb-2">
-         R$ 329,90
-        </div><button class="bg-gradient-to-r from-green-500 to-emerald-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div><!-- Produto 6 -->
-<div class="card-hover bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<div class="bg-gradient-to-br from-orange-500 to-red-600 rounded-2xl w-20 h-20 flex items-center justify-center mb-6 mx-auto"><span class="text-3xl text-white">🧰</span>
-</div>
-<h3 class="text-2xl font-bold text-navy mb-4 text-center">Kit Completo Profissional</h3>
-<p class="text-gray-600 mb-6 text-center">Kit completo com máquina, tesouras, soprador e todos os acessórios necessários</p>
-<div class="space-y-3 mb-6">
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Máquina + 10 lâminas</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">3 tesouras profissionais</span>
-</div>
-<div class="flex items-center space-x-3"><span class="w-2 h-2 bg-orange-500 rounded-full"></span> <span class="text-sm text-gray-600">Maleta organizadora</span>
-</div>
-</div>
-<div class="text-center">
-<div class="text-3xl font-black text-orange-600 mb-2">
-         R$ 2.499,90
-        </div>
-<div class="text-sm text-green-600 font-bold mb-3">
-         Economia de R$ 500!
-        </div><button class="bg-gradient-to-r from-orange-500 to-red-600 text-white px-8 py-3 rounded-full font-bold hover:shadow-lg transform hover:scale-105 transition-all duration-300"> Comprar Agora </button>
-</div>
-</div>
-</div><!-- Seção de Benefícios -->
-<div class="mt-20">
-<div class="text-center mb-12">
-<h2 class="text-4xl font-black text-navy mb-6">Por que escolher nossos kits?</h2>
-<p class="text-xl text-gray-600 max-w-3xl mx-auto">Ferramentas profissionais testadas e aprovadas pelos melhores tosadores do Brasil</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-<div class="text-center p-6 bg-tiffany bg-opacity-10 rounded-2xl">
-<div class="bg-tiffany rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">🏆</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Qualidade Premium</h3>
-<p class="text-sm text-gray-600">Materiais de primeira linha importados</p>
-</div>
-<div class="text-center p-6 bg-cyan-50 rounded-2xl">
-<div class="bg-cyan-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">🛠️</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Garantia Estendida</h3>
-<p class="text-sm text-gray-600">2 anos de garantia total</p>
-</div>
-<div class="text-center p-6 bg-blue-50 rounded-2xl">
-<div class="bg-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">📚</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Treinamento Incluso</h3>
-<p class="text-sm text-gray-600">Curso online de tosa profissional</p>
-</div>
-<div class="text-center p-6 bg-purple-50 rounded-2xl">
-<div class="bg-purple-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">🚚</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Frete Grátis</h3>
-<p class="text-sm text-gray-600">Entrega gratuita em todo Brasil</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-</div><!-- CHECKOUT PAGE -->
-<div class="page" id="checkout"><!-- Hero Section -->
-<section class="relative py-12 bg-gradient-to-br from-tiffany via-cyan-600 to-blue-700 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 left-0 w-96 h-96 bg-white rounded-full -translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 right-0 w-96 h-96 bg-blue-300 rounded-full translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-8"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar à Loja </button>
-<div class="bg-gradient-to-br from-white to-blue-100 rounded-full w-24 h-24 mx-auto flex items-center justify-center mb-6 shadow-2xl"><span class="text-4xl">🛒</span>
-</div>
-<h1 class="text-5xl font-black text-white mb-4">Finalizar Compra</h1>
-<p class="text-lg text-cyan-100 max-w-2xl mx-auto">Complete seus dados para receber os melhores produtos veterinários em casa</p>
-</div>
-</div>
-</section><!-- Checkout Form -->
-<section class="py-16 bg-white">
-<div class="container mx-auto px-6">
-<div class="max-w-6xl mx-auto">
-<div class="grid grid-cols-1 lg:grid-cols-3 gap-12"><!-- Formulário -->
-<div class="lg:col-span-2">
-<div class="bg-white rounded-3xl p-8 shadow-xl border border-gray-100">
-<h2 class="text-3xl font-black text-navy mb-8 flex items-center"><span class="bg-tiffany rounded-full w-10 h-10 flex items-center justify-center text-white font-bold text-lg mr-4">1</span> Dados Pessoais</h2>
-<form class="space-y-6" onsubmit="processarPedido(event)">
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div><label class="block text-navy font-bold mb-2">Nome Completo *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Seu nome completo" required="" type="text"/>
-</div>
-<div><label class="block text-navy font-bold mb-2">CPF *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="000.000.000-00" required="" type="text"/>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div><label class="block text-navy font-bold mb-2">Email *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="seu@email.com" required="" type="email"/>
-</div>
-<div><label class="block text-navy font-bold mb-2">Telefone/WhatsApp *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="(11) 99999-9999" required="" type="tel"/>
-</div>
-</div>
-<div class="border-t border-gray-200 pt-8 mt-8">
-<h3 class="text-2xl font-black text-navy mb-6 flex items-center"><span class="bg-cyan-600 rounded-full w-10 h-10 flex items-center justify-center text-white font-bold text-lg mr-4">2</span> Endereço de Entrega</h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-6">
-<div><label class="block text-navy font-bold mb-2">CEP *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="00000-000" required="" type="text"/>
-</div>
-<div class="md:col-span-2"><label class="block text-navy font-bold mb-2">Endereço *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Rua, Avenida..." required="" type="text"/>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-6">
-<div><label class="block text-navy font-bold mb-2">Número *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="123" required="" type="text"/>
-</div>
-<div><label class="block text-navy font-bold mb-2">Complemento</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Apto, Bloco..." type="text"/>
-</div>
-<div class="md:col-span-2"><label class="block text-navy font-bold mb-2">Bairro *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Nome do bairro" required="" type="text"/>
-</div>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-<div><label class="block text-navy font-bold mb-2">Cidade *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Nome da cidade" required="" type="text"/>
-</div>
-<div><label class="block text-navy font-bold mb-2">Estado *</label> <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" required=""> <option value="">Selecione o estado</option> <option value="SP">São Paulo</option> <option value="RJ">Rio de Janeiro</option> <option value="MG">Minas Gerais</option> <option value="RS">Rio Grande do Sul</option> <option value="PR">Paraná</option> <option value="SC">Santa Catarina</option> <option value="BA">Bahia</option> <option value="GO">Goiás</option> <option value="PE">Pernambuco</option> <option value="CE">Ceará</option> </select>
-</div>
-</div>
-</div>
-<div class="border-t border-gray-200 pt-8 mt-8">
-<h3 class="text-2xl font-black text-navy mb-6 flex items-center"><span class="bg-blue-600 rounded-full w-10 h-10 flex items-center justify-center text-white font-bold text-lg mr-4">3</span> Informações do Pet</h3>
-<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-<div><label class="block text-navy font-bold mb-2">Nome do Pet *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Nome do seu pet" required="" type="text"/>
-</div>
-<div><label class="block text-navy font-bold mb-2">Espécie *</label> <select class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" required=""> <option value="">Selecione</option> <option value="cao">Cão</option> <option value="gato">Gato</option> <option value="ave">Ave</option> <option value="roedor">Roedor</option> <option value="reptil">Réptil</option> <option value="outro">Outro</option> </select>
-</div>
-<div><label class="block text-navy font-bold mb-2">Peso Aproximado *</label> <input class="w-full px-4 py-3 border-2 border-gray-200 rounded-xl focus:border-tiffany focus:outline-none transition-colors duration-300" placeholder="Ex: 5kg" required="" type="text"/>
-</div>
-</div>
-</div>
-<div class="pt-6"><button class="w-full bg-gradient-to-r from-tiffany to-cyan-600 text-white px-8 py-4 rounded-2xl font-black text-lg shadow-xl hover:shadow-2xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center space-x-3" type="submit"> <span class="text-2xl">🛒</span> <span>Finalizar Pedido</span> </button>
-</div>
-</form>
-</div>
-</div><!-- Resumo do Pedido -->
-<div class="lg:col-span-1">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-3xl p-8 text-white shadow-xl sticky top-6">
-<h3 class="text-2xl font-black mb-6 flex items-center"><span class="text-3xl mr-3">📦</span> Resumo do Pedido</h3>
-<div class="space-y-4 mb-6">
-<div class="bg-white bg-opacity-20 rounded-2xl p-4">
-<div class="flex items-center space-x-4">
-<div class="bg-white bg-opacity-30 rounded-xl p-3"><span class="text-2xl">💊</span>
-</div>
-<div class="flex-1">
-<h4 class="font-bold">Multivitamínico Completo</h4>
-<p class="text-sm text-cyan-100">Quantidade: 1</p>
-</div>
-<div class="text-right">
-<div class="font-black text-lg">
-              R$ 89,90
-             </div>
-</div>
-</div>
-</div>
-</div>
-<div class="border-t border-white border-opacity-30 pt-6 space-y-3">
-<div class="flex justify-between text-cyan-100"><span>Subtotal:</span> <span>R$ 89,90</span>
-</div>
-<div class="flex justify-between text-cyan-100"><span>Frete:</span> <span class="text-green-300 font-bold">GRÁTIS</span>
-</div>
-<div class="flex justify-between text-cyan-100"><span>Desconto:</span> <span class="text-green-300">-R$ 10,00</span>
-</div>
-<div class="border-t border-white border-opacity-30 pt-3">
-<div class="flex justify-between text-xl font-black"><span>Total:</span> <span>R$ 79,90</span>
-</div>
-</div>
-</div>
-<div class="mt-8 space-y-4">
-<div class="bg-white bg-opacity-20 rounded-2xl p-4">
-<div class="flex items-center space-x-3 mb-3"><span class="text-2xl">🚚</span> <span class="font-bold">Entrega Expressa</span>
-</div>
-<p class="text-sm text-cyan-100">Receba em até 24h na Grande São Paulo ou 48h demais regiões</p>
-</div>
-<div class="bg-white bg-opacity-20 rounded-2xl p-4">
-<div class="flex items-center space-x-3 mb-3"><span class="text-2xl">🛡️</span> <span class="font-bold">Compra Segura</span>
-</div>
-<p class="text-sm text-cyan-100">Seus dados protegidos com criptografia SSL</p>
-</div>
-<div class="bg-white bg-opacity-20 rounded-2xl p-4">
-<div class="flex items-center space-x-3 mb-3"><span class="text-2xl">💬</span> <span class="font-bold">Suporte Especializado</span>
-</div>
-<p class="text-sm text-cyan-100">Tire dúvidas com nossos veterinários</p>
-</div>
-</div>
-<div class="mt-8 text-center">
-<div class="flex items-center justify-center space-x-2 text-sm text-cyan-100"><span>🔒</span> <span>Pagamento 100% seguro</span>
-</div>
-<div class="flex items-center justify-center space-x-4 mt-3"><span class="bg-white bg-opacity-30 rounded px-2 py-1 text-xs font-bold">VISA</span> <span class="bg-white bg-opacity-30 rounded px-2 py-1 text-xs font-bold">MASTER</span> <span class="bg-white bg-opacity-30 rounded px-2 py-1 text-xs font-bold">PIX</span> <span class="bg-white bg-opacity-30 rounded px-2 py-1 text-xs font-bold">BOLETO</span>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section><!-- Garantias e Benefícios -->
-<section class="py-16 bg-gray-50">
-<div class="container mx-auto px-6">
-<div class="text-center mb-12">
-<h2 class="text-4xl font-black text-navy mb-4">Por que comprar conosco?</h2>
-<p class="text-xl text-gray-600">Benefícios exclusivos para você e seu pet</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 max-w-6xl mx-auto">
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-<div class="bg-gradient-to-br from-tiffany to-cyan-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">🎯</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Produtos Originais</h3>
-<p class="text-sm text-gray-600">100% originais com garantia do fabricante</p>
-</div>
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-<div class="bg-gradient-to-br from-cyan-500 to-blue-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">⚡</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Entrega Rápida</h3>
-<p class="text-sm text-gray-600">Receba em até 24h na sua região</p>
-</div>
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-<div class="bg-gradient-to-br from-blue-500 to-indigo-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">💰</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Melhor Preço</h3>
-<p class="text-sm text-gray-600">Preços competitivos e promoções exclusivas</p>
-</div>
-<div class="text-center p-6 bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300">
-<div class="bg-gradient-to-br from-purple-500 to-pink-600 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4"><span class="text-2xl text-white">🩺</span>
-</div>
-<h3 class="text-lg font-bold text-navy mb-2">Suporte Veterinário</h3>
-<p class="text-sm text-gray-600">Consultoria gratuita com especialistas</p>
-</div>
-</div>
-</div>
-</section>
-</div><!-- ANTIBIÓTICOS PAGE -->
-<div class="page" id="antibioticos"><!-- Hero Section -->
-<section class="relative py-20 bg-gradient-to-br from-blue-600 via-indigo-700 to-purple-800 overflow-hidden">
-<div class="absolute inset-0 opacity-20">
-<div class="absolute top-0 right-0 w-96 h-96 bg-cyan-400 rounded-full translate-x-48 -translate-y-48"></div>
-<div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-400 rounded-full -translate-x-48 translate-y-48"></div>
-</div>
-<div class="container mx-auto px-6 relative z-10">
-<div class="text-center mb-12"><button class="bg-white bg-opacity-20 text-white px-6 py-2 rounded-full font-bold text-sm mb-6 hover:bg-opacity-30 transition-all duration-300" onclick="showPage('home')"> ← Voltar ao Início </button>
-<div class="bg-gradient-to-br from-cyan-400 to-blue-400 rounded-full w-32 h-32 mx-auto flex items-center justify-center mb-8 shadow-2xl"><span class="text-6xl">💉</span>
-</div>
-<h1 class="text-6xl font-black text-white mb-6">Antibióticos Veterinários</h1>
-</div>
-</div>
-</section>
-</div>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9966234293551a95',t:'MTc2MTc3NzIzOS4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
-</html>
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9966269c32921a95',t:'MTc2MTc3NzM3Ny4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>F
