@@ -1,126 +1,191 @@
-
-// auth.js — Login modal Cliente / Colaborador
-(function(){
-  const KEY_USER='fp_user';
-  const ADMIN_PASSWORD='11Marco@2023'; // senha de acesso de colaborador (nível mestre)
-
-  function getUser(){ try{return JSON.parse(localStorage.getItem(KEY_USER))}catch(e){return null} }
-  function setUser(u){ localStorage.setItem(KEY_USER, JSON.stringify(u)); renderSession(); }
-  function logout(){ localStorage.removeItem(KEY_USER); renderSession(); }
-
-  function shaLike(s){ return btoa(unescape(encodeURIComponent(s))).split('').reverse().join(''); }
-
-  function ensureAdminSeed(){
-    const colabs = fp_getColabs();
-    if(!colabs.find(c=>c.email==="admin@santini.com")){
-      colabs.push({ id: Date.now(), nome:"Administrador", email:"admin@santini.com", nivel:"Administrador", senha: shaLike(ADMIN_PASSWORD) });
-      fp_setColabs(colabs);
-    }
+// assets/scripts/auth.js — v12 (E-mail/senha + Google + Esqueci senha + Enter + 👁️)
+(function () {
+  const extra = `
+  <style id="fp-auth-extra-style-v12">
+    .fp-eye{position:absolute; right:12px; top:36px; cursor:pointer; font-size:13px; color:#6b7280}
+    .fp-sep{margin:0 .25rem; color:#5bc0be; font-weight:600}
+    .gbtn{display:flex; gap:.5rem; align-items:center; justify-content:center; width:100%; border:1px solid #e6e6e6; background:#fff; border-radius:12px; padding:.7rem 1rem; font-weight:600; cursor:pointer}
+    .gbtn:hover{background:#f7f7f9}
+    .gicon{width:18px;height:18px;display:inline-block;background:url('https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg') no-repeat center/contain}
+  </style>`;
+  if (!document.getElementById("fp-auth-extra-style-v12")) {
+    document.head.insertAdjacentHTML("beforeend", extra);
   }
 
-  function openModal(){ document.getElementById('loginModal')?.classList.remove('hidden'); document.body.style.overflow='hidden'; }
-  function closeModal(){ document.getElementById('loginModal')?.classList.add('hidden'); document.body.style.overflow=''; }
+  function openModal() {
+    const m = document.getElementById("loginModal");
+    if (m) { m.classList.remove("hidden"); document.body.style.overflow = "hidden"; }
+  }
+  function closeModal() {
+    const m = document.getElementById("loginModal");
+    if (m) { m.classList.add("hidden"); document.body.style.overflow = ""; }
+  }
 
-  function mountModal(){
-    if(document.getElementById('loginModal')) return;
-    const el = document.createElement('div');
-    el.id='loginModal'; el.className='hidden fixed inset-0 z-50';
-    el.innerHTML = `
-      <div class="absolute inset-0 bg-black/50 backdrop-blur-sm" data-close="1"></div>
-      <div class="absolute inset-0 flex items-center justify-center p-4">
-        <div class="bg-white w-full max-w-md rounded-2xl shadow-xl relative">
-          <button class="absolute right-3 top-3 text-gray-600" data-close="1">✕</button>
-          <div class="p-6">
-            <h2 class="text-xl font-bold mb-4">Entrar</h2>
-            <div class="flex gap-2 mb-4">
-              <button class="tab active" data-tab="cli">Cliente</button>
-              <button class="tab" data-tab="col">Colaborador</button>
+  function ensureModal() {
+    if (document.getElementById("loginModal")) return;
+    const w = document.createElement("div");
+    w.id = "loginModal";
+    w.className = "hidden fixed inset-0 z-50";
+    w.innerHTML = `
+    <div class="absolute inset-0 fp-modal-overlay" data-close="1"></div>
+    <div class="absolute inset-0 flex items-center justify-center p-4">
+      <div class="fp-card w-full max-w-md relative" style="background:white;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,.15)">
+        <div class="flex items-center justify-between px-6 py-4" style="border-bottom:1px solid #eee">
+          <div class="fp-modal-title" style="font-weight:700;font-size:1.1rem;color:#1b4070">Entrar na Farmácia Pet</div>
+          <button class="fp-close" data-close="1" aria-label="Fechar" style="font-size:1.2rem">✕</button>
+        </div>
+        <div class="p-6">
+          <div class="flex items-center justify-center gap-2 mb-4">
+            <button class="fp-tab active" data-tab="cli" style="color:#1b4070">🐾 Cliente</button>
+            <span class="fp-sep">/</span>
+            <button class="fp-tab" data-tab="col" style="color:#1b4070">💼 Colaborador</button>
+          </div>
+
+          <div id="tab-cli">
+            <label class="block mb-1" style="font-size:.85rem;color:#6b7280">E-mail</label>
+            <input id="cli-email" class="fp-input mb-3" type="email" placeholder="email@exemplo.com" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:8px">
+            <div style="position:relative">
+              <label class="block mb-1" style="font-size:.85rem;color:#6b7280">Senha</label>
+              <input id="cli-senha" class="fp-input mb-1" type="password" placeholder="••••••••" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:8px">
+              <span class="fp-eye" data-eye="#cli-senha">👁️</span>
             </div>
-            <div id="tab-cli">
-              <label class="block text-sm mb-1">E-mail</label>
-              <input id="cli-email" class="w-full border rounded px-3 py-2 mb-3" type="email" placeholder="email@exemplo.com">
-              <label class="block text-sm mb-1">Senha</label>
-              <input id="cli-senha" class="w-full border rounded px-3 py-2 mb-4" type="password" placeholder="••••••••">
-              <button id="btn-cli" class="w-full bg-black text-white rounded py-2">Entrar</button>
+            <div class="flex justify-between items-center mb-3" style="font-size:.85rem">
+              <a href="#" id="link-forgot" style="color:#5bc0be">Esqueci minha senha</a>
             </div>
-            <div id="tab-col" class="hidden">
-              <label class="block text-sm mb-1">E-mail (colaborador)</label>
-              <input id="col-email" class="w-full border rounded px-3 py-2 mb-3" type="email" placeholder="colaborador@empresa.com">
-              <label class="block text-sm mb-1">Senha de acesso</label>
-              <input id="col-senha" class="w-full border rounded px-3 py-2 mb-4" type="password" placeholder="••••••••">
-              <button id="btn-col" class="w-full bg-black text-white rounded py-2">Acessar painel</button>
+            <button id="btn-cli" class="fp-btn primary w-full" style="margin-bottom:.6rem;background:#1b4070;color:white;padding:.7rem;border-radius:10px;width:100%">Entrar</button>
+            <button id="btn-g" class="gbtn"><span class="gicon"></span> Entrar com Google</button>
+          </div>
+
+          <div id="tab-col" class="hidden">
+            <label class="block mb-1" style="font-size:.85rem;color:#6b7280">E-mail (colaborador)</label>
+            <input id="col-email" class="fp-input mb-3" type="email" placeholder="colaborador@empresa.com" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:8px">
+            <div style="position:relative">
+              <label class="block mb-1" style="font-size:.85rem;color:#6b7280">Senha</label>
+              <input id="col-senha" class="fp-input mb-1" type="password" placeholder="••••••••" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:8px">
+              <span class="fp-eye" data-eye="#col-senha">👁️</span>
             </div>
+            <button id="btn-col" class="fp-btn primary w-full" style="margin-top:.5rem;background:#1b4070;color:white;padding:.7rem;border-radius:10px;width:100%">Acessar painel</button>
+          </div>
+
+          <div id="forgot-area" class="hidden" style="margin-top:10px">
+            <label class="block mb-1" style="font-size:.85rem;color:#6b7280">E-mail para redefinir</label>
+            <input id="forgot-email" class="fp-input mb-2" type="email" placeholder="seu@email.com" style="width:100%;padding:.6rem;border:1px solid #ddd;border-radius:8px">
+            <button id="btn-forgot" class="fp-btn primary w-full" style="background:#1b4070;color:white;padding:.7rem;border-radius:10px;width:100%">Enviar link de redefinição</button>
           </div>
         </div>
-      </div>`;
-    document.body.appendChild(el);
-    el.addEventListener('click', e=>{ if(e.target.dataset.close) closeModal(); });
-    const tabs = el.querySelectorAll('.tab');
-    tabs.forEach(b=>b.addEventListener('click', ()=>{
-      tabs.forEach(x=>x.classList.remove('active')); b.classList.add('active');
-      const t = b.dataset.tab;
-      el.querySelector('#tab-cli').classList.toggle('hidden', t!=='cli');
-      el.querySelector('#tab-col').classList.toggle('hidden', t!=='col');
-    }));
-    el.querySelector('#btn-cli').onclick = ()=>{
-      const email = el.querySelector('#cli-email').value.trim();
-      const senha = el.querySelector('#cli-senha').value.trim();
-      if(!email || !senha) return alert('Preencha e-mail e senha');
-      setUser({ tipo:'cliente', email, nome: email.split('@')[0] });
-      closeModal(); location.hash = '#minha-conta';
-    };
-    el.querySelector('#btn-col').onclick = ()=>{
-      const email = el.querySelector('#col-email').value.trim();
-      const senha = el.querySelector('#col-senha').value.trim();
-      if(!email || !senha) return alert('Preencha e-mail e senha');
-      // permite login mestre pela senha padrão ou por colaborador cadastrado
-      const cols = fp_getColabs();
-      const ok = (senha===ADMIN_PASSWORD) || cols.find(c => c.email.toLowerCase()===email.toLowerCase() && c.senha===shaLike(senha));
-      if(!ok) return alert('Credenciais inválidas');
-      setUser({ tipo:'colaborador', email, nome: email.split('@')[0], nivel: 'Colaborador' });
-      closeModal(); location.href='admin.html';
-    };
-  }
+      </div>
+    </div>`;
+    document.body.appendChild(w);
 
-  function injectLoginButton(){
-    // não mostra "Admin" na navbar; apenas "Entrar"
-    let btn = document.querySelector('[data-action="open-login"]');
-    if(!btn){
-      // tenta injetar na navbar existente
-      const nav = document.querySelector('nav') || document.querySelector('header');
-      if(nav){
-        btn = document.createElement('a'); btn.href="#"; btn.textContent="Entrar"; btn.setAttribute('data-action','open-login');
-        btn.style.marginLeft='12px'; btn.style.cursor='pointer';
-        // tenta colocar em menus ul>li
-        const ul = nav.querySelector('ul');
-        if(ul){ const li = document.createElement('li'); li.appendChild(btn); ul.appendChild(li); }
-        else { nav.appendChild(btn); }
-      } else {
-        // fallback flutuante
-        btn = document.createElement('button'); btn.textContent='Entrar'; btn.setAttribute('data-action','open-login');
-        Object.assign(btn.style,{position:'fixed',right:'16px',bottom:'16px',padding:'10px 14px',borderRadius:'12px',background:'#000',color:'#fff',zIndex:40});
-        document.body.appendChild(btn);
+    // fechar
+    w.addEventListener("click", (e) => { if (e.target.dataset.close) closeModal(); });
+
+    // alternar abas cliente/colaborador
+    const tabs = w.querySelectorAll(".fp-tab");
+    tabs.forEach((b) =>
+      b.addEventListener("click", () => {
+        tabs.forEach((x) => x.classList.remove("active"));
+        b.classList.add("active");
+        const t = b.dataset.tab;
+        w.querySelector("#tab-cli").classList.toggle("hidden", t !== "cli");
+        w.querySelector("#tab-col").classList.toggle("hidden", t !== "col");
+      })
+    );
+
+    // 👁️ mostrar senha
+    w.querySelectorAll(".fp-eye").forEach((icon) => {
+      icon.addEventListener("click", () => {
+        const input = w.querySelector(icon.dataset.eye);
+        if (!input) return;
+        input.type = input.type === "password" ? "text" : "password";
+      });
+    });
+
+    // enter = login
+    const subCli = () => w.querySelector("#btn-cli").click();
+    const subCol = () => w.querySelector("#btn-col").click();
+    ["#cli-email", "#cli-senha"].forEach((sel) =>
+      w.querySelector(sel).addEventListener("keydown", (e) => { if (e.key === "Enter") subCli(); })
+    );
+    ["#col-email", "#col-senha"].forEach((sel) =>
+      w.querySelector(sel).addEventListener("keydown", (e) => { if (e.key === "Enter") subCol(); })
+    );
+
+    // login cliente
+    w.querySelector("#btn-cli").onclick = async () => {
+      const email = w.querySelector("#cli-email").value.trim();
+      const senha = w.querySelector("#cli-senha").value.trim();
+      if (!email || !senha) return alert("Preencha e-mail e senha");
+      try {
+        if (window.fp?.auth) {
+          await window.fp.auth.signInWithEmailAndPassword(email, senha);
+          if(window.analyticsEvents) analyticsEvents.login('password');
+        }
+        closeModal(); location.hash = "#minha-conta";
+      } catch (err) { alert("Falha no login: " + (err.message || err)); }
+    };
+
+    // login colaborador
+    w.querySelector("#btn-col").onclick = async () => {
+      const email = w.querySelector("#col-email").value.trim();
+      const senha = w.querySelector("#col-senha").value.trim();
+      if (!email || !senha) return alert("Preencha e-mail e senha");
+      try {
+        if (window.fp?.auth) {
+          await window.fp.auth.signInWithEmailAndPassword(email, senha);
+          if(window.analyticsEvents) analyticsEvents.login('password-admin');
+        }
+        location.href = "admin.html";
+      } catch (err) { alert("Falha no login: " + (err.message || err)); }
+    };
+
+    // login Google
+    w.querySelector("#btn-g").onclick = async () => {
+      try {
+        if (!window.fp?.auth) return alert("Autenticação indisponível (Firebase não carregou).");
+        const provider = new firebase.auth.GoogleAuthProvider();
+        await window.fp.auth.signInWithPopup(provider);
+        if(window.analyticsEvents) analyticsEvents.login('google');
+        closeModal(); location.hash = "#minha-conta";
+      } catch (err) {
+        alert("Falha no Google: " + (err.message || err));
       }
-    }
-    btn.addEventListener('click', e=>{ e.preventDefault(); openModal(); });
+    };
+
+    // Esqueci senha
+    w.querySelector("#link-forgot").onclick = (e) => {
+      e.preventDefault();
+      w.querySelector("#tab-cli").classList.add("hidden");
+      w.querySelector("#tab-col").classList.add("hidden");
+      w.querySelector("#forgot-area").classList.remove("hidden");
+    };
+
+    w.querySelector("#btn-forgot").onclick = async () => {
+      const email = w.querySelector("#forgot-email").value.trim();
+      if (!email) return alert("Informe o e-mail");
+      try {
+        if (window.fp?.auth) {
+          await window.fp.auth.sendPasswordResetEmail(email);
+          alert("Enviamos um e-mail com o link para redefinir sua senha.");
+          closeModal();
+        } else { alert("Recurso de e-mail requer Firebase."); }
+      } catch (err) { alert("Não foi possível enviar: " + (err.message || err)); }
+    };
   }
 
-  function renderSession(){
-    const u = getUser();
-    const loginBtn = document.querySelector('[data-action="open-login"]');
-    const accountBtn = document.querySelector('[data-action="open-account"]'); // caso exista
-    if(u){
-      if(accountBtn){ accountBtn.classList.remove('hidden'); accountBtn.href='carrinho.html#minha-conta'; accountBtn.textContent='Minha Conta'; }
-      if(loginBtn){ loginBtn.textContent = (u.tipo==='colaborador'?'Administração':'Minha Conta'); loginBtn.onclick = (e)=>{
-        e.preventDefault(); if(u.tipo==='colaborador'){ location.href='admin.html'; } else { location.href='carrinho.html#minha-conta'; }
-      }; }
-    }
+  // substitui botão Admin → Entrar
+  function injectLoginButton() {
+    document.querySelectorAll("a,button").forEach((el) => {
+      if ((el.textContent || "").match(/\bAdmin\b/i)) {
+        el.textContent = "Entrar";
+        el.setAttribute("data-action", "open-login");
+        el.onclick = (e) => { e.preventDefault(); openModal(); };
+      }
+    });
   }
 
-  document.addEventListener('DOMContentLoaded', ()=>{
-    ensureAdminSeed();
-    mountModal();
+  document.addEventListener("DOMContentLoaded", function () {
+    ensureModal();
     injectLoginButton();
-    renderSession();
   });
 })();
