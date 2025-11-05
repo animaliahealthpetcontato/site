@@ -1,1 +1,404 @@
-<!DOCTYPE html><html><head><title>Administração</title></head><body><h1>Painel Administrativo</h1></body></html>
+<!doctype html>
+<html lang="pt-br">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Painel Administrativo — Farmácia Pet</title>
+<link rel="stylesheet" href="assets/css/style.css">
+<style>
+:root{ --bg:#0b0c0f; --card:#111317; --muted:#9aa1a9; --primary:#10b981; --border:#1c1f26; }
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:#fff;font-family:Inter,system-ui,Arial}
+.container{max-width:1100px;margin:0 auto;padding:24px}
+.header{display:flex;align-items:center;justify-content:space-between;margin-bottom:16px}
+.header h1{font-size:20px;margin:0}
+.nav{display:flex;gap:8px;flex-wrap:wrap}
+.nav button{background:#151922;border:1px solid var(--border);color:#fff;padding:10px 14px;border-radius:12px;cursor:pointer}
+.nav button.active{background:var(--primary);border-color:var(--primary);color:#041814}
+.card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:16px}
+.grid{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.hidden{display:none}
+.table{width:100%;border-collapse:collapse}
+.table th,.table td{border-bottom:1px solid var(--border);padding:10px;text-align:left;font-size:14px}
+.badge{display:inline-block;padding:4px 8px;border-radius:999px;background:#1e293b;color:#cbd5e1;font-size:12px}
+input,select,textarea{width:100%;background:#0f1218;border:1px solid var(--border);color:#fff;border-radius:10px;padding:10px}
+label{font-size:12px;color:var(--muted);display:block;margin-bottom:6px}
+.btn{padding:10px 14px;border-radius:10px;border:1px solid var(--border);background:#0f1218;color:#fff;cursor:pointer}
+.btn.primary{background:var(--primary);border-color:var(--primary);color:#032a1f}
+.row{display:flex;gap:8px;flex-wrap:wrap}
+.preview{width:88px;height:88px;border-radius:10px;border:1px dashed var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;background:#0f1218}
+.preview img{width:100%;height:100%;object-fit:cover}
+.kpi{display:flex;gap:12px;flex-wrap:wrap}
+.kpi .card{flex:1;min-width:220px}
+.small{font-size:12px;color:var(--muted)}
+</style>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+</head>
+<body>
+<div class="container">
+  <div class="header">
+    <h1>Admin — Farmácia Pet</h1>
+    <div class="row">
+      <a href="index.html" class="btn">← Voltar ao site</a>
+      <button class="btn" data-action="logout">Sair</button>
+    </div>
+  </div>
+
+  <div class="nav">
+    <button class="active" data-tab="produtos">📦 Produtos</button>
+    <button data-tab="pedidos">🧾 Pedidos</button>
+    <button data-tab="financeiro">💰 Financeiro</button>
+    <button data-tab="visitas">📊 Visitantes</button>
+    <button data-tab="colaboradores">👥 Colaboradores</button>
+    <button data-tab="config">⚙️ Configurações</button>
+  </div>
+
+  <!-- PRODUTOS -->
+  <section id="tab-produtos" class="tab card" style="margin-top:14px">
+    <h2 style="margin-top:0">Cadastrar / Editar Produto</h2>
+    <div class="grid" style="grid-template-columns:repeat(12,1fr)">
+      <div class="col" style="grid-column:span 8">
+        <div class="row">
+          <div style="flex:1;min-width:240px">
+            <label>Nome</label><input id="p-nome">
+          </div>
+          <div style="width:180px">
+            <label>Preço (R$)</label><input id="p-preco" type="number" step="0.01">
+          </div>
+          <div style="width:160px">
+            <label>Estoque</label><input id="p-estoque" type="number" step="1">
+          </div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <div style="flex:1;min-width:240px">
+            <label>Categoria</label>
+            <select id="p-categoria">
+              <option>Vitaminas & Minerais</option>
+              <option>Probióticos Avançados</option>
+              <option>Ômega 3 & 6 Premium</option>
+              <option>Articulações & Mobilidade</option>
+              <option>Vermífugos Eficazes</option>
+              <option>Antibióticos Veterinários</option>
+              <option>Anti-Inflamatórios</option>
+              <option>Homeopatia Pet</option>
+              <option>Alimentação Natural</option>
+              <option>Petiscos Funcionais</option>
+              <option>Biscoitos Artesanais</option>
+              <option>Shampoos Premium</option>
+              <option>Condicionadores</option>
+              <option>Perfumes Exclusivos</option>
+              <option>Kit Tosa Profissional</option>
+            </select>
+          </div>
+        </div>
+        <div style="margin-top:8px">
+          <label>Descrição</label>
+          <textarea id="p-desc" rows="3"></textarea>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn primary" id="btn-salvar">Salvar produto</button>
+          <button class="btn" id="btn-limpar">Limpar</button>
+          <button class="btn" id="btn-exportar">Baixar JSON</button>
+        </div>
+      </div>
+      <div class="col" style="grid-column:span 4">
+        <label>Imagem</label>
+        <div class="preview" id="p-preview">Arraste a imagem aqui</div>
+        <input id="p-imagem" type="file" accept="image/*" style="margin-top:8px">
+      </div>
+    </div>
+
+    <h3 style="margin-top:16px">Lista de produtos</h3>
+    <table class="table" id="t-produtos">
+      <thead><tr><th>Imagem</th><th>Nome</th><th>Categoria</th><th>Estoque</th><th>Preço</th><th>Ações</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- PEDIDOS -->
+  <section id="tab-pedidos" class="tab card hidden" style="margin-top:14px">
+    <h2 style="margin-top:0">Pedidos</h2>
+    <table class="table" id="t-pedidos">
+      <thead><tr><th>#</th><th>Data</th><th>Cliente</th><th>Itens</th><th>Status</th><th>Valor (R$)</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- FINANCEIRO -->
+  <section id="tab-financeiro" class="tab card hidden" style="margin-top:14px">
+    <h2 style="margin-top:0">Financeiro</h2>
+    <div class="kpi">
+      <div class="card"><div class="small">Faturamento total</div><div id="kpi-fat" style="font-size:22px;font-weight:700">R$ 0,00</div></div>
+      <div class="card"><div class="small">Total de pedidos</div><div id="kpi-ped" style="font-size:22px;font-weight:700">0</div></div>
+      <div class="card"><div class="small">Ticket médio</div><div id="kpi-tm" style="font-size:22px;font-weight:700">R$ 0,00</div></div>
+    </div>
+    <div class="grid" style="grid-template-columns:repeat(12,1fr);margin-top:12px">
+      <div class="card" style="grid-column:span 7">
+        <div class="small">Faturamento por dia</div>
+        <canvas id="chartFat" height="160"></canvas>
+      </div>
+      <div class="card" style="grid-column:span 5">
+        <div class="small">Vendas por categoria</div>
+        <canvas id="chartCat" height="160"></canvas>
+      </div>
+    </div>
+  </section>
+
+  <!-- VISITAS -->
+  <section id="tab-visitas" class="tab card hidden" style="margin-top:14px">
+    <h2 style="margin-top:0">Visitantes</h2>
+    <table class="table" id="t-visitas">
+      <thead><tr><th>Página</th><th>Total de visitas</th><th>Hoje</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="card" style="margin-top:12px">
+      <div class="small">Visitas por dia (todas as páginas)</div>
+      <canvas id="chartVisits" height="160"></canvas>
+    </div>
+  </section>
+
+  <!-- COLABORADORES -->
+  <section id="tab-colaboradores" class="tab card hidden" style="margin-top:14px">
+    <h2 style="margin-top:0">Colaboradores & Permissões</h2>
+    <div class="grid" style="grid-template-columns:repeat(12,1fr)">
+      <div class="col" style="grid-column:span 6">
+        <div class="row">
+          <div style="flex:1"><label>Nome</label><input id="c-nome"></div>
+          <div style="flex:1"><label>E-mail</label><input id="c-email" type="email"></div>
+        </div>
+        <div class="row" style="margin-top:8px">
+          <div style="flex:1"><label>Senha</label><input id="c-senha" type="password"></div>
+          <div style="width:220px">
+            <label>Nível</label>
+            <select id="c-nivel">
+              <option>Administrador</option>
+              <option>Gestor</option>
+              <option>Atendente</option>
+              <option>Estoquista</option>
+            </select>
+          </div>
+        </div>
+        <div class="row" style="margin-top:12px">
+          <button class="btn primary" id="btn-colab-salvar">Salvar colaborador</button>
+          <button class="btn" id="btn-colab-limpar">Limpar</button>
+        </div>
+      </div>
+    </div>
+    <h3 style="margin-top:16px">Lista de colaboradores</h3>
+    <table class="table" id="t-colabs">
+      <thead><tr><th>Nome</th><th>E-mail</th><th>Nível</th><th>Ações</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- CONFIG -->
+  <section id="tab-config" class="tab card hidden" style="margin-top:14px">
+    <h2 style="margin-top:0">Configurações</h2>
+    <p class="small">Exportar backups</p>
+    <div class="row">
+      <button class="btn" id="backup-produtos">Baixar produtos.json</button>
+      <button class="btn" id="backup-pedidos">Baixar pedidos.json</button>
+      <button class="btn" id="backup-colabs">Baixar colaboradores.json</button>
+    </div>
+  </section>
+</div>
+
+<script src="assets/scripts/store.js"></script>
+<script>
+// Tabs
+document.querySelectorAll('.nav button').forEach(btn=>{
+  btn.addEventListener('click', ()=>{
+    document.querySelectorAll('.nav button').forEach(b=>b.classList.remove('active'));
+    btn.classList.add('active');
+    const tab = btn.dataset.tab;
+    document.querySelectorAll('.tab').forEach(s=>s.classList.add('hidden'));
+    document.querySelector('#tab-'+tab).classList.remove('hidden');
+  });
+});
+
+// Produtos
+let currentId = null, currentImg = "";
+const el = sel => document.querySelector(sel);
+const tbodyProdutos = el('#t-produtos tbody');
+function renderProdutos(){
+  const arr = fp_getProducts();
+  tbodyProdutos.innerHTML = arr.map(p=>`
+    <tr>
+      <td>${p.imagem? `<img src="${p.imagem}" style="width:52px;height:52px;border-radius:8px;object-fit:cover">` : '-'}</td>
+      <td>${p.nome}</td>
+      <td><span class="badge">${p.categoria||'-'}</span></td>
+      <td>${p.estoque??0}</td>
+      <td>R$ ${Number(p.preco||0).toFixed(2)}</td>
+      <td>
+        <button class="btn" data-edit="${p.id}">Editar</button>
+        <button class="btn" data-del="${p.id}">Excluir</button>
+      </td>
+    </tr>
+  `).join('');
+}
+renderProdutos();
+
+tbodyProdutos.addEventListener('click', (e)=>{
+  const idEdit = e.target.dataset.edit; const idDel = e.target.dataset.del;
+  if(idEdit){
+    const p = fp_getProducts().find(x=>String(x.id)===String(idEdit));
+    if(p){ currentId=p.id; currentImg=p.imagem||"";
+      el('#p-nome').value=p.nome||""; el('#p-preco').value=p.preco||0; el('#p-estoque').value=p.estoque||0;
+      el('#p-categoria').value=p.categoria||""; el('#p-desc').value=p.descricao||"";
+      if(currentImg){ el('#p-preview').innerHTML = `<img src="${currentImg}">`; }
+    }
+  }
+  if(idDel){
+    if(confirm('Excluir este produto?')){
+      const arr = fp_getProducts().filter(x=>String(x.id)!==String(idDel));
+      fp_setProducts(arr); renderProdutos();
+    }
+  }
+});
+
+el('#p-imagem').addEventListener('change', (ev)=>{
+  const file = ev.target.files[0]; if(!file) return;
+  const reader = new FileReader(); reader.onload = e => { currentImg = e.target.result; el('#p-preview').innerHTML = `<img src="${currentImg}">`; };
+  reader.readAsDataURL(file);
+});
+el('#p-preview').addEventListener('dragover', e=>e.preventDefault());
+el('#p-preview').addEventListener('drop', e=>{
+  e.preventDefault(); const file = e.dataTransfer.files?.[0]; if(!file) return;
+  const reader = new FileReader(); reader.onload = ev => { currentImg = ev.target.result; el('#p-preview').innerHTML = `<img src="${currentImg}">`; };
+  reader.readAsDataURL(file);
+});
+
+el('#btn-salvar').onclick = ()=>{
+  const nome = el('#p-nome').value.trim(); if(!nome) return alert('Informe o nome');
+  const preco = parseFloat(el('#p-preco').value||'0'); const estoque = parseInt(el('#p-estoque').value||'0');
+  const categoria = el('#p-categoria').value; const desc = el('#p-desc').value.trim();
+  const arr = fp_getProducts();
+  if(currentId){
+    const i = arr.findIndex(x=>x.id===currentId); if(i>-1){ arr[i] = {...arr[i], nome, preco, estoque, categoria, descricao:desc, imagem: currentImg}; }
+  } else {
+    arr.push({ id: Date.now(), nome, preco, estoque, categoria, descricao:desc, imagem: currentImg });
+  }
+  fp_setProducts(arr); currentId=null; currentImg=""; el('#p-imagem').value=""; el('#p-preview').textContent="Arraste a imagem aqui";
+  el('#p-nome').value=""; el('#p-preco').value=""; el('#p-estoque').value=""; el('#p-desc').value="";
+  renderProdutos();
+};
+el('#btn-limpar').onclick = ()=>{ currentId=null; currentImg=""; ['#p-nome','#p-preco','#p-estoque','#p-desc'].forEach(s=>el(s).value=""); el('#p-imagem').value=""; el('#p-preview').textContent="Arraste a imagem aqui"; };
+el('#btn-exportar').onclick = ()=>{
+  const data = JSON.stringify(fp_getProducts(), null, 2);
+  const blob = new Blob([data], {type:'application/json'});
+  const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'produtos.json'; a.click();
+};
+
+// Pedidos
+const tbodyPedidos = el('#t-pedidos tbody');
+function renderPedidos(){
+  const arr = fp_getOrders();
+  tbodyPedidos.innerHTML = arr.map((o,idx)=>{
+    const itens = o.itens?.map(i=>`${i.qtd}x ${i.nome}`).join(', ') || '-';
+    return `<tr><td>${idx+1}</td><td>${o.data||'-'}</td><td>${o.cliente?.email||'-'}</td><td>${itens}</td><td>${o.status||'—'}</td><td>${(o.total??0).toFixed(2)}</td></tr>`;
+  }).join('');
+}
+renderPedidos();
+
+// Financeiro
+function calcFinanceiro(){
+  const arr = fp_getOrders();
+  const fat = arr.reduce((s,o)=>s+(o.total||0),0);
+  const tm = arr.length? fat/arr.length : 0;
+  document.getElementById('kpi-fat').textContent = 'R$ ' + fat.toFixed(2);
+  document.getElementById('kpi-ped').textContent = String(arr.length);
+  document.getElementById('kpi-tm').textContent = 'R$ ' + tm.toFixed(2);
+
+  // por dia
+  const byDay = {};
+  arr.forEach(o=>{ const d = (o.data||'').slice(0,10) || 'n/d'; byDay[d]=(byDay[d]||0)+(o.total||0); });
+  const l1 = Object.keys(byDay).sort(); const v1 = l1.map(k=>byDay[k]);
+  new Chart(document.getElementById('chartFat'), { type:'line', data:{ labels:l1, datasets:[{label:'Faturamento', data:v1}] } });
+
+  // por categoria
+  const cat = {};
+  arr.forEach(o=> o.itens?.forEach(i=>{ cat[i.categoria] = (cat[i.categoria]||0) + (i.qtd||1)*(i.preco||0); }));
+  const l2 = Object.keys(cat); const v2 = l2.map(k=>cat[k]);
+  new Chart(document.getElementById('chartCat'), { type:'bar', data:{ labels:l2, datasets:[{label:'R$', data:v2}] } });
+}
+calcFinanceiro();
+
+// Visitas
+const tbodyVis = el('#t-visitas tbody');
+function renderVisitas(){
+  const v = fp_getVisits();
+  const today = new Date().toISOString().slice(0,10);
+  tbodyVis.innerHTML = Object.entries(v).map(([page,info])=>{
+    const todayCount = (info.byDate||{})[today]||0;
+    return `<tr><td>${page}</td><td>${info.total||0}</td><td>${todayCount}</td></tr>`;
+  }).join('');
+
+  // Agregado por dia
+  const totalByDay = {};
+  Object.values(v).forEach(info=>{
+    Object.entries(info.byDate||{}).forEach(([d,c])=>{ totalByDay[d]=(totalByDay[d]||0)+c; });
+  });
+  const labels = Object.keys(totalByDay).sort(); const vals = labels.map(k=>totalByDay[k]);
+  new Chart(document.getElementById('chartVisits'), { type:'line', data:{ labels, datasets:[{label:'Visitas', data:vals}] } });
+}
+renderVisitas();
+
+// Colaboradores
+const tbodyCol = el('#t-colabs tbody');
+let currentColId = null;
+function renderColabs(){
+  const arr = fp_getColabs();
+  tbodyCol.innerHTML = arr.map(c=>`
+    <tr>
+      <td>${c.nome}</td><td>${c.email}</td><td><span class="badge">${c.nivel}</span></td>
+      <td><button class="btn" data-editc="${c.id}">Editar</button> <button class="btn" data-delc="${c.id}">Excluir</button></td>
+    </tr>`).join('');
+}
+renderColabs();
+
+tbodyCol.addEventListener('click', (e)=>{
+  const idE = e.target.dataset.editc, idD = e.target.dataset.delc;
+  if(idE){
+    const c = fp_getColabs().find(x=>String(x.id)===String(idE)); if(c){
+      currentColId = c.id; document.getElementById('c-nome').value=c.nome; document.getElementById('c-email').value=c.email;
+      document.getElementById('c-nivel').value=c.nivel;
+    }
+  }
+  if(idD){
+    if(confirm('Excluir colaborador?')){
+      const arr = fp_getColabs().filter(x=>String(x.id)!==String(idD)); fp_setColabs(arr); renderColabs();
+    }
+  }
+});
+document.getElementById('btn-colab-salvar').onclick = ()=>{
+  const nome = document.getElementById('c-nome').value.trim();
+  const email = document.getElementById('c-email').value.trim();
+  const senha = document.getElementById('c-senha').value.trim();
+  const nivel = document.getElementById('c-nivel').value;
+  if(!nome || !email || (!currentColId && !senha)) return alert('Preencha nome, e-mail e senha (para novo).');
+  const arr = fp_getColabs();
+  const hash = senha ? (btoa(unescape(encodeURIComponent(senha))).split('').reverse().join('')) : null;
+  if(currentColId){
+    const i = arr.findIndex(x=>x.id===currentColId); if(i>-1){ arr[i] = {...arr[i], nome, email, nivel, senha: hash ?? arr[i].senha }; }
+  } else {
+    arr.push({ id: Date.now(), nome, email, nivel, senha: hash });
+  }
+  fp_setColabs(arr); currentColId=null; ['c-nome','c-email','c-senha'].forEach(id=>document.getElementById(id).value=""); renderColabs();
+};
+document.getElementById('btn-colab-limpar').onclick = ()=>{ currentColId=null; ['c-nome','c-email','c-senha'].forEach(id=>document.getElementById(id).value=""); };
+
+// Backups
+function downloadJSON(filename, data){
+  const blob = new Blob([JSON.stringify(data,null,2)],{type:'application/json'});
+  const a = document.createElement('a'); a.href=URL.createObjectURL(blob); a.download=filename; a.click();
+}
+document.getElementById('backup-produtos').onclick = ()=> downloadJSON('produtos.json', fp_getProducts());
+document.getElementById('backup-pedidos').onclick = ()=> downloadJSON('pedidos.json', fp_getOrders());
+document.getElementById('backup-colabs').onclick = ()=> downloadJSON('colaboradores.json', fp_getColabs());
+
+// Logout
+document.querySelector('[data-action="logout"]').onclick = (e)=>{ e.preventDefault(); localStorage.removeItem('fp_user'); location.href='index.html'; };
+</script>
+<script src="assets/scripts/auth.js"></script>
+</body>
+</html>
