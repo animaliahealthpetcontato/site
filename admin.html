@@ -1,3 +1,30 @@
+<!doctype html><html lang='pt-br'>
+<head>
+<meta charset='utf-8'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0'>
+<title>Admin — Farmácia Pet</title>
+<link rel="stylesheet" href="assets/css/style.css" />
+
+<style>
+:root{--primary:#5bc0be;--accent:#00c896;--text:#1a1a1a;--bg:#ffffff;--overlay:rgba(0,0,0,.45)}
+@keyframes fp-fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fp-modal-overlay{background:var(--overlay);backdrop-filter:blur(6px)}
+.fp-card{background:var(--bg);color:var(--text);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.18);animation:fp-fade-up .25s ease-out both}
+.fp-modal-title{font-weight:700;font-size:1.125rem}
+.fp-tab{padding:.55rem 1rem;border-radius:999px;border:1px solid #e6e6e6;background:#f7f7f9;cursor:pointer}
+.fp-tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.fp-input{width:100%;border:1px solid #e6e6e6;border-radius:12px;padding:.75rem 1rem;outline:none}
+.fp-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(91,192,190,.15)}
+.fp-btn{border:none;border-radius:12px;padding:.75rem 1rem;cursor:pointer;font-weight:600}
+.fp-btn.primary{background:var(--primary);color:#fff}
+.fp-btn.primary:hover{background:var(--accent)}
+.fp-close{color:#6b7280}
+.fp-close:hover{color:#111}
+</style>
+
+</head>
+<body>
+<main style='padding:24px 0'><div class='container'>
 <!doctype html>
 <html lang="pt-br">
 <head>
@@ -400,5 +427,82 @@ document.getElementById('backup-colabs').onclick = ()=> downloadJSON('colaborado
 document.querySelector('[data-action="logout"]').onclick = (e)=>{ e.preventDefault(); localStorage.removeItem('fp_user'); location.href='index.html'; };
 </script>
 <script src="assets/scripts/auth.js"></script>
+</body>
+</html>
+
+</div></main>
+
+<script src='assets/scripts/store.js'></script>
+<script src='assets/scripts/auth.js'></script>
+<script src='assets/scripts/main.js'></script>
+
+<script>
+(function(){
+  // Append modern modal at DOMContentLoaded if not present
+  document.addEventListener('DOMContentLoaded', function(){
+    if(!document.getElementById('loginModal')){
+      const wrap = document.createElement('div');
+      wrap.id='loginModal';
+      wrap.className='hidden fixed inset-0 z-50';
+      wrap.innerHTML = `
+        <div class="absolute inset-0 fp-modal-overlay" data-close="1"></div>
+        <div class="absolute inset-0 flex items-center justify-center p-4">
+          <div class="fp-card w-full max-w-md relative">
+            <div class="flex items-center justify-between px-6 py-4" style="border-bottom:1px solid #eee">
+              <div class="fp-modal-title">Entrar na Farmácia Pet</div>
+              <button class="fp-close" data-close="1" aria-label="Fechar">✕</button>
+            </div>
+            <div class="p-6">
+              <div class="flex gap-2 mb-4">
+                <button class="fp-tab active" data-tab="cli">🐾 Cliente</button>
+                <button class="fp-tab" data-tab="col">💼 Colaborador</button>
+              </div>
+              <div id="tab-cli">
+                <label class="block mb-1" style="font-size:.85rem;color:#6b7280">E-mail</label>
+                <input id="cli-email" class="fp-input mb-3" type="email" placeholder="email@exemplo.com">
+                <label class="block mb-1" style="font-size:.85rem;color:#6b7280">Senha</label>
+                <input id="cli-senha" class="fp-input mb-4" type="password" placeholder="••••••••">
+                <button id="btn-cli" class="fp-btn primary w-full">Entrar</button>
+              </div>
+              <div id="tab-col" class="hidden">
+                <label class="block mb-1" style="font-size:.85rem;color:#6b7280">E-mail (colaborador)</label>
+                <input id="col-email" class="fp-input mb-3" type="email" placeholder="colaborador@empresa.com">
+                <label class="block mb-1" style="font-size:.85rem;color:#6b7280">Senha de acesso</label>
+                <input id="col-senha" class="fp-input mb-4" type="password" placeholder="••••••••">
+                <button id="btn-col" class="fp-btn primary w-full">Acessar painel</button>
+              </div>
+            </div>
+          </div>
+        </div>`;
+      document.body.appendChild(wrap);
+
+      wrap.addEventListener('click', (e)=>{ if(e.target.dataset.close) wrap.classList.add('hidden'); document.body.style.overflow=''; });
+      const tabs = wrap.querySelectorAll('.fp-tab');
+      tabs.forEach(b=>b.addEventListener('click', ()=>{
+        tabs.forEach(x=>x.classList.remove('active')); b.classList.add('active');
+        const t=b.dataset.tab;
+        wrap.querySelector('#tab-cli').classList.toggle('hidden', t!=='cli');
+        wrap.querySelector('#tab-col').classList.toggle('hidden', t!=='col');
+      }));
+      // Buttons (use functions from auth.js if present)
+      const setUser = (u)=>{ try{localStorage.setItem('fp_user', JSON.stringify(u));}catch(e){} };
+      wrap.querySelector('#btn-cli').onclick = ()=>{
+        const email = wrap.querySelector('#cli-email').value.trim();
+        const senha = wrap.querySelector('#cli-senha').value.trim();
+        if(!email || !senha) return alert('Preencha e-mail e senha');
+        setUser({ tipo:'cliente', email, nome: email.split('@')[0] });
+        wrap.classList.add('hidden'); document.body.style.overflow=''; location.hash='#minha-conta';
+      };
+      wrap.querySelector('#btn-col').onclick = ()=>{
+        const email = wrap.querySelector('#col-email').value.trim();
+        const senha = wrap.querySelector('#col-senha').value.trim();
+        if(!email || !senha) return alert('Preencha e-mail e senha');
+        if(senha!=='11Marco@2023'){ alert('Credenciais inválidas'); return; }
+        setUser({ tipo:'colaborador', email, nome: email.split('@')[0], nivel: 'Colaborador' });
+        wrap.classList.add('hidden'); document.body.style.overflow=''; location.href='admin.html';
+      };
+    }
+  });
+})();</script>
 </body>
 </html>

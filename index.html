@@ -22,6 +22,24 @@
   </script>
   <link rel="stylesheet" href="assets/css/style.css" />
   <script defer src="assets/scripts/main.js"></script>
+
+<style>
+:root{--primary:#5bc0be;--accent:#00c896;--text:#1a1a1a;--bg:#ffffff;--overlay:rgba(0,0,0,.45)}
+@keyframes fp-fade-up{from{opacity:0;transform:translateY(12px)}to{opacity:1;transform:none}}
+.fp-modal-overlay{background:var(--overlay);backdrop-filter:blur(6px)}
+.fp-card{background:var(--bg);color:var(--text);border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,.18);animation:fp-fade-up .25s ease-out both}
+.fp-modal-title{font-weight:700;font-size:1.125rem}
+.fp-tab{padding:.55rem 1rem;border-radius:999px;border:1px solid #e6e6e6;background:#f7f7f9;cursor:pointer}
+.fp-tab.active{background:var(--primary);border-color:var(--primary);color:#fff}
+.fp-input{width:100%;border:1px solid #e6e6e6;border-radius:12px;padding:.75rem 1rem;outline:none}
+.fp-input:focus{border-color:var(--primary);box-shadow:0 0 0 3px rgba(91,192,190,.15)}
+.fp-btn{border:none;border-radius:12px;padding:.75rem 1rem;cursor:pointer;font-weight:600}
+.fp-btn.primary{background:var(--primary);color:#fff}
+.fp-btn.primary:hover{background:var(--accent)}
+.fp-close{color:#6b7280}
+.fp-close:hover{color:#111}
+</style>
+
 </head>
 <body class="bg-cream">
 <header class="bg-white shadow-2xl sticky top-0 z-50 border-b-4 border-tiffany">
@@ -62,7 +80,7 @@
         </div>
       </div>
       <div class="hidden lg:flex items-center space-x-4">
-        <a href="admin.html" class="text-navy font-bold hover:text-tiffany">Admin</a>
+        <a href="#" data-action="open-login">Entrar</a>
         <a href="carrinho.html" class="bg-gradient-to-r from-tiffany to-tiffany-dark text-white px-6 py-3 rounded-2xl font-bold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center space-x-2">
           <span>🛒</span><span>Carrinho</span>
         </a>
