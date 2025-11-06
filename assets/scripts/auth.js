@@ -1,4 +1,4 @@
-// assets/scripts/auth.js — v12 (E-mail/senha + Google + Esqueci senha + Enter + 👁️)
+// assets/scripts/auth.js — v12 (E-mail/senha + Google + Esqueci senha + Enter + 👁️ + MOBILE FIX)
 (function () {
   const extra = `
   <style id="fp-auth-extra-style-v12">
@@ -119,7 +119,6 @@
       try {
         if (window.fp?.auth) {
           await window.fp.auth.signInWithEmailAndPassword(email, senha);
-          if (window.analyticsEvents) analyticsEvents.login('password');
         }
         closeModal();
         location.hash = "#minha-conta";
@@ -134,7 +133,6 @@
       try {
         if (window.fp?.auth) {
           await window.fp.auth.signInWithEmailAndPassword(email, senha);
-          if (window.analyticsEvents) analyticsEvents.login('password-admin');
         }
         location.href = "admin.html";
       } catch (err) { alert("Falha no login: " + (err.message || err)); }
@@ -146,7 +144,6 @@
         if (!window.fp?.auth) return alert("Autenticação indisponível (Firebase não carregou).");
         const provider = new firebase.auth.GoogleAuthProvider();
         await window.fp.auth.signInWithPopup(provider);
-        if (window.analyticsEvents) analyticsEvents.login('google');
         closeModal();
         location.hash = "#minha-conta";
       } catch (err) {
@@ -186,23 +183,22 @@
     });
   }
 
-  // ao carregar a página
   document.addEventListener("DOMContentLoaded", function () {
     ensureModal();
     injectLoginButton();
-    // deixa a função acessível para navbar dinâmica
     window.fpAuthScanNav = injectLoginButton;
   });
 
-  // [MOBILE] clique delegado para abrir modal de login em qualquer menu/página
-  document.addEventListener("click", function (e) {
+  // 🔧 MOBILE FIX — garante que o botão funcione em menus dinâmicos
+  document.body.addEventListener("click", function (e) {
     const alvo = e.target.closest('[data-action="open-login"], .menu-item-login, a[href="#login"]');
     if (!alvo) return;
     e.preventDefault();
-    const modal = document.getElementById("loginModal");
-    if (!modal) return;
-    modal.classList.remove("hidden");
-    document.body.style.overflow = "hidden";
+    setTimeout(() => {
+      const modal = document.getElementById("loginModal");
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      document.body.style.overflow = "hidden";
+    }, 150);
   });
-
 })();
