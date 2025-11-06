@@ -300,10 +300,38 @@
   </div>
 </footer>
 
-<script src="assets/scripts/store.js"></script>
-<script src="assets/scripts/auth.js"></script>
+<!-- Modal de Login -->
+<div id="login-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50">
+  <div class="fp-card max-w-sm w-full p-6 text-center relative">
+    <button onclick="closeLoginModal()" class="absolute top-3 right-3 fp-close text-xl">&times;</button>
+    <h2 class="fp-modal-title mb-4">Acesse sua conta</h2>
+
+    <input type="email" id="login-email" placeholder="E-mail" class="fp-input mb-3">
+    <div class="relative mb-3">
+      <input type="password" id="login-password" placeholder="Senha" class="fp-input">
+      <button type="button" onclick="togglePassword()" class="absolute right-4 top-3 text-gray-400">👁️</button>
+    </div>
+
+    <button onclick="loginWithEmail()" class="fp-btn primary w-full mb-3">Entrar</button>
+    <button onclick="loginWithGoogle()" class="fp-btn w-full border border-gray-300 mb-3">🔐 Entrar com Google</button>
+
+    <button onclick="showResetModal()" class="text-sm text-tiffany-dark underline hover:text-tiffany">Esqueci minha senha</button>
+  </div>
+</div>
+
+<!-- Modal de Reset de Senha -->
+<div id="reset-modal" class="fixed inset-0 bg-black bg-opacity-50 backdrop-blur-sm hidden items-center justify-center z-50">
+  <div class="fp-card max-w-sm w-full p-6 text-center relative">
+    <button onclick="closeResetModal()" class="absolute top-3 right-3 fp-close text-xl">&times;</button>
+    <h2 class="fp-modal-title mb-4">Redefinir Senha</h2>
+    <input type="email" id="reset-email" placeholder="Seu e-mail" class="fp-input mb-3">
+    <button onclick="sendPasswordReset()" class="fp-btn primary w-full">Enviar Código</button>
+  </div>
+</div>
 <script src="assets/scripts/firebase-config.js"></script>
 <script src="assets/scripts/analytics-events.js"></script>
 <script src="assets/scripts/firestore.js"></script>
+<script src="assets/scripts/store.js"></script>
+<script src="assets/scripts/auth.js"></script>
 </body>
 </html>
