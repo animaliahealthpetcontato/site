@@ -1,34 +1,24 @@
-// assets/scripts/auth.js — v15 (Cliente + Colaborador + Google + Esqueci Senha + Mobile Fix Total)
+// assets/scripts/auth.js — v12 (E-mail/senha + Google + Esqueci senha + Enter + 👁️)
 (function () {
   const extra = `
-  <style id="fp-auth-extra-style-v15">
+  <style id="fp-auth-extra-style-v12">
     .fp-eye{position:absolute; right:12px; top:36px; cursor:pointer; font-size:13px; color:#6b7280}
     .fp-sep{margin:0 .25rem; color:#5bc0be; font-weight:600}
     .gbtn{display:flex; gap:.5rem; align-items:center; justify-content:center; width:100%; border:1px solid #e6e6e6; background:#fff; border-radius:12px; padding:.7rem 1rem; font-weight:600; cursor:pointer}
     .gbtn:hover{background:#f7f7f9}
     .gicon{width:18px;height:18px;display:inline-block;background:url('https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg') no-repeat center/contain}
-    #loginModal{z-index:9999 !important;}
-    .fp-modal-overlay{background:rgba(0,0,0,0.45);backdrop-filter:blur(4px);}
   </style>`;
-  if (!document.getElementById("fp-auth-extra-style-v15")) {
+  if (!document.getElementById("fp-auth-extra-style-v12")) {
     document.head.insertAdjacentHTML("beforeend", extra);
   }
 
   function openModal() {
-    ensureModal();
     const m = document.getElementById("loginModal");
-    if (m) {
-      m.classList.remove("hidden");
-      document.body.style.overflow = "hidden";
-    }
+    if (m) { m.classList.remove("hidden"); document.body.style.overflow = "hidden"; }
   }
-
   function closeModal() {
     const m = document.getElementById("loginModal");
-    if (m) {
-      m.classList.add("hidden");
-      document.body.style.overflow = "";
-    }
+    if (m) { m.classList.add("hidden"); document.body.style.overflow = ""; }
   }
 
   function ensureModal() {
@@ -87,27 +77,82 @@
     </div>`;
     document.body.appendChild(w);
 
-    // Fechar modal
+    // fechar modal
     w.addEventListener("click", (e) => { if (e.target.dataset.close) closeModal(); });
 
-    // Alternar abas
-    w.querySelectorAll(".fp-tab").forEach((b) => {
+    // alternar abas cliente/colaborador
+    const tabs = w.querySelectorAll(".fp-tab");
+    tabs.forEach((b) =>
       b.addEventListener("click", () => {
-        w.querySelectorAll(".fp-tab").forEach((x) => x.classList.remove("active"));
+        tabs.forEach((x) => x.classList.remove("active"));
         b.classList.add("active");
         const t = b.dataset.tab;
         w.querySelector("#tab-cli").classList.toggle("hidden", t !== "cli");
         w.querySelector("#tab-col").classList.toggle("hidden", t !== "col");
-      });
-    });
+      })
+    );
 
-    // Mostrar senha
+    // 👁️ mostrar senha
     w.querySelectorAll(".fp-eye").forEach((icon) => {
       icon.addEventListener("click", () => {
         const input = w.querySelector(icon.dataset.eye);
-        if (input) input.type = input.type === "password" ? "text" : "password";
+        if (!input) return;
+        input.type = input.type === "password" ? "text" : "password";
       });
     });
+
+    // enter = login
+    const subCli = () => w.querySelector("#btn-cli").click();
+    const subCol = () => w.querySelector("#btn-col").click();
+    ["#cli-email", "#cli-senha"].forEach((sel) =>
+      w.querySelector(sel).addEventListener("keydown", (e) => { if (e.key === "Enter") subCli(); })
+    );
+    ["#col-email", "#col-senha"].forEach((sel) =>
+      w.querySelector(sel).addEventListener("keydown", (e) => { if (e.key === "Enter") subCol(); })
+    );
+
+    // login cliente
+    w.querySelector("#btn-cli").onclick = async () => {
+      const email = w.querySelector("#cli-email").value.trim();
+      const senha = w.querySelector("#cli-senha").value.trim();
+      if (!email || !senha) return alert("Preencha e-mail e senha");
+      try {
+        if (window.fp?.auth) {
+          await window.fp.auth.signInWithEmailAndPassword(email, senha);
+          if (window.analyticsEvents) analyticsEvents.login('password');
+        }
+        closeModal();
+        location.hash = "#minha-conta";
+      } catch (err) { alert("Falha no login: " + (err.message || err)); }
+    };
+
+    // login colaborador
+    w.querySelector("#btn-col").onclick = async () => {
+      const email = w.querySelector("#col-email").value.trim();
+      const senha = w.querySelector("#col-senha").value.trim();
+      if (!email || !senha) return alert("Preencha e-mail e senha");
+      try {
+        if (window.fp?.auth) {
+          await window.fp.auth.signInWithEmailAndPassword(email, senha);
+          if (window.analyticsEvents) analyticsEvents.login('password-admin');
+        }
+        location.href = "admin.html";
+      } catch (err) { alert("Falha no login: " + (err.message || err)); }
+    };
+
+    // login Google
+    w.querySelector("#btn-g").onclick = async () => {
+      try {
+        if (!window.fp?.auth) return alert("Autenticação indisponível (Firebase não carregou).");
+        const provider = new firebase.auth.GoogleAuthProvider();
+        await window.fp.auth.signInWithPopup(provider);
+        if (window.analyticsEvents) analyticsEvents.login('google');
+        closeModal();
+        location.hash = "#minha-conta";
+      } catch (err) {
+        alert("Falha no Google: " + (err.message || err));
+      }
+    };
 
     // Esqueci senha
     w.querySelector("#link-forgot").onclick = (e) => {
@@ -117,67 +162,20 @@
       w.querySelector("#forgot-area").classList.remove("hidden");
     };
 
-    // Reset senha
     w.querySelector("#btn-forgot").onclick = async () => {
       const email = w.querySelector("#forgot-email").value.trim();
       if (!email) return alert("Informe o e-mail");
       try {
-        await window.fp.auth.sendPasswordResetEmail(email);
-        alert("E-mail de redefinição enviado!");
-        closeModal();
-      } catch (err) { alert("Erro: " + (err.message || err)); }
+        if (window.fp?.auth) {
+          await window.fp.auth.sendPasswordResetEmail(email);
+          alert("Enviamos um e-mail com o link para redefinir sua senha.");
+          closeModal();
+        } else { alert("Recurso de e-mail requer Firebase."); }
+      } catch (err) { alert("Não foi possível enviar: " + (err.message || err)); }
     };
-
-    // Login cliente
-    w.querySelector("#btn-cli").addEventListener("click", async () => {
-      const email = w.querySelector("#cli-email").value.trim();
-      const senha = w.querySelector("#cli-senha").value.trim();
-      if (!email || !senha) return alert("Preencha e-mail e senha");
-      try {
-        await window.fp.auth.signInWithEmailAndPassword(email, senha);
-        closeModal();
-        location.hash = "#minha-conta";
-      } catch (err) { alert("Falha: " + (err.message || err)); }
-    });
-
-    // Login colaborador — compatível com mobile e desktop
-    const botaoCol = w.querySelector("#btn-col");
-    ["click", "touchend"].forEach(evt => {
-      botaoCol.addEventListener(evt, async (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        const email = w.querySelector("#col-email").value.trim();
-        const senha = w.querySelector("#col-senha").value.trim();
-        if (!email || !senha) return alert("Preencha e-mail e senha");
-
-        document.activeElement?.blur();
-        botaoCol.disabled = true;
-        botaoCol.textContent = "Entrando...";
-
-        try {
-          await window.fp.auth.signInWithEmailAndPassword(email, senha);
-          setTimeout(() => location.href = "admin.html", 400);
-        } catch (err) {
-          alert("Erro: " + (err.message || err));
-          botaoCol.disabled = false;
-          botaoCol.textContent = "Acessar painel";
-        }
-      }, { passive: false });
-    });
-
-    // Login Google
-    w.querySelector("#btn-g").addEventListener("click", async () => {
-      try {
-        const provider = new firebase.auth.GoogleAuthProvider();
-        await window.fp.auth.signInWithPopup(provider);
-        closeModal();
-        location.hash = "#minha-conta";
-      } catch (err) { alert("Erro Google: " + (err.message || err)); }
-    });
   }
 
-  // Substitui "Admin" → "Entrar"
+  // substitui botão Admin → Entrar
   function injectLoginButton() {
     document.querySelectorAll("a,button").forEach((el) => {
       if ((el.textContent || "").match(/\bAdmin\b/i)) {
@@ -188,19 +186,23 @@
     });
   }
 
-  document.addEventListener("DOMContentLoaded", () => {
+  // ao carregar a página
+  document.addEventListener("DOMContentLoaded", function () {
     ensureModal();
     injectLoginButton();
+    // deixa a função acessível para navbar dinâmica
     window.fpAuthScanNav = injectLoginButton;
   });
 
-  // MOBILE FIX — menus e eventos dinâmicos
-  document.body.addEventListener("click", (e) => {
-    const alvo = e.target.closest('[data-action="open-login"], .menu-item-login, a[href="#login"], button[data-login]');
+  // [MOBILE] clique delegado para abrir modal de login em qualquer menu/página
+  document.addEventListener("click", function (e) {
+    const alvo = e.target.closest('[data-action="open-login"], .menu-item-login, a[href="#login"]');
     if (!alvo) return;
     e.preventDefault();
-    const menu = document.querySelector(".menu.open, .menu-mobile.open, nav.open, .is-active");
-    if (menu) menu.classList.remove("open", "is-active", "active");
-    setTimeout(() => openModal(), 200);
+    const modal = document.getElementById("loginModal");
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
   });
+
 })();
