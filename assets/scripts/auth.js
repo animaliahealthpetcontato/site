@@ -77,7 +77,7 @@
     </div>`;
     document.body.appendChild(w);
 
-    // fechar
+    // fechar modal
     w.addEventListener("click", (e) => { if (e.target.dataset.close) closeModal(); });
 
     // alternar abas cliente/colaborador
@@ -119,9 +119,10 @@
       try {
         if (window.fp?.auth) {
           await window.fp.auth.signInWithEmailAndPassword(email, senha);
-          if(window.analyticsEvents) analyticsEvents.login('password');
+          if (window.analyticsEvents) analyticsEvents.login('password');
         }
-        closeModal(); location.hash = "#minha-conta";
+        closeModal();
+        location.hash = "#minha-conta";
       } catch (err) { alert("Falha no login: " + (err.message || err)); }
     };
 
@@ -133,7 +134,7 @@
       try {
         if (window.fp?.auth) {
           await window.fp.auth.signInWithEmailAndPassword(email, senha);
-          if(window.analyticsEvents) analyticsEvents.login('password-admin');
+          if (window.analyticsEvents) analyticsEvents.login('password-admin');
         }
         location.href = "admin.html";
       } catch (err) { alert("Falha no login: " + (err.message || err)); }
@@ -145,8 +146,9 @@
         if (!window.fp?.auth) return alert("Autenticação indisponível (Firebase não carregou).");
         const provider = new firebase.auth.GoogleAuthProvider();
         await window.fp.auth.signInWithPopup(provider);
-        if(window.analyticsEvents) analyticsEvents.login('google');
-        closeModal(); location.hash = "#minha-conta";
+        if (window.analyticsEvents) analyticsEvents.login('google');
+        closeModal();
+        location.hash = "#minha-conta";
       } catch (err) {
         alert("Falha no Google: " + (err.message || err));
       }
@@ -184,8 +186,23 @@
     });
   }
 
+  // ao carregar a página
   document.addEventListener("DOMContentLoaded", function () {
     ensureModal();
     injectLoginButton();
+    // deixa a função acessível para navbar dinâmica
+    window.fpAuthScanNav = injectLoginButton;
   });
+
+  // [MOBILE] clique delegado para abrir modal de login em qualquer menu/página
+  document.addEventListener("click", function (e) {
+    const alvo = e.target.closest('[data-action="open-login"], .menu-item-login, a[href="#login"]');
+    if (!alvo) return;
+    e.preventDefault();
+    const modal = document.getElementById("loginModal");
+    if (!modal) return;
+    modal.classList.remove("hidden");
+    document.body.style.overflow = "hidden";
+  });
+
 })();
